@@ -10,14 +10,14 @@ export const navLinks: NavLinkItem[] = [
   },
   {
     label: "Services",
-    href: "#services",
+    href: "/Services",
   },
   {
     label: "Gallery",
-    href: "#gallery",
+    href: "/Gallery",
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "/Contact",
   },
 ];
