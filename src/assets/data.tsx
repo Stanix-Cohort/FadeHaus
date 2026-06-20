@@ -16,22 +16,22 @@ import Profile3 from "./images/profile_3.png";
 export const navLinks = [
   {
     label: "Home",
-    href: "/ ",
+    href: "/",
   },
 
   {
     label: "Services",
-    href: "services ",
+    href: "/services",
   },
 
   {
     label: "Gallery",
-    href: "gallery",
+    href: "/gallery",
   },
 
   {
     label: "Contact",
-    href: "contact",
+    href: "/contact",
   },
 ];
 

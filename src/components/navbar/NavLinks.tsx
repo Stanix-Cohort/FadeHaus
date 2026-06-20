@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import { navLinks } from "../../assets/data";
 
 interface NavLinksProps {
@@ -11,18 +13,17 @@ export default function NavLinks({
 }: NavLinksProps) {
   return (
     <>
-      {navLinks.map((link, index) => (
-        <a
+      {navLinks.map((link) => (
+        <NavLink
           key={link.label}
-          href={link.href}
+          to={link.href}
           onClick={onNavigate}
-          className={`
+          className={({ }) => `
             ${
               mobile
                 ? `
                   block
                   text-med-sm
-                  text-white
                   uppercase
                   tracking-wider
                   py-3
@@ -30,11 +31,12 @@ export default function NavLinks({
                 : `
                   relative
                   text-med-sm
-                  text-white
                   uppercase
                   tracking-wider
                 `
             }
+
+            text-white
 
             transition-all
             duration-300
@@ -42,23 +44,29 @@ export default function NavLinks({
             hover:text-brand
           `}
         >
-          {link.label}
+          {({ isActive }) => (
+            <>
+              {link.label}
 
-          {/* Active Home Indicator */}
+              {!mobile && isActive && (
+                <span
+                  className="
+                    absolute
 
-          {!mobile && index === 0 && (
-            <span
-              className="
-                absolute
-                left-0
-                right-0
-                -bottom-3
-                h-0.5
-                bg-white
-              "
-            />
+                    left-0
+                    right-0
+
+                    -bottom-3
+
+                    h-0.5
+
+                    bg-white
+                  "
+                />
+              )}
+            </>
           )}
-        </a>
+        </NavLink>
       ))}
     </>
   );

@@ -1,0 +1,249 @@
+.services-page {
+  padding-top: 140px;
+  background: #111;
+  color: #fff;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.svc-header {
+  text-align: center;
+  padding: 60px 40px 30px;
+}
+.svc-header__label {
+  color: #c9a84c;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+.svc-header__title {
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.svc-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
+.svc-tab {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.svc-tab.active {
+  background: #fff;
+  color: #111;
+}
+
+.svc-section {
+  padding: 40px 60px;
+}
+.svc-section__label {
+  color: #c9a84c;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.svc-card {
+  border: 1px solid #333;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.svc-card__img-wrap {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.svc-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.svc-card__name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #c9a84c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.svc-card__price {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.svc-card__desc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.svc-card__btn {
+  width: 100%;
+  padding: 14px;
+  background: #d4b896;
+  border: none;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.svc-card__btn:hover {
+  background: #c9a84c;
+}
+
+.svc-tailored {
+  padding: 30px 60px;
+}
+.svc-tailored__heading {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.svc-tailored__sub {
+  font-size: 14px;
+  color: #aaa;
+}
+.svc-tailored__wa {
+  color: #c9a84c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.svc-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 0 60px;
+}
+
+.svc-banner {
+  background-image: url('/assets/banner-bg.webp');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 80px 40px;
+  position: relative;
+}
+.svc-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+.svc-banner__title,
+.svc-banner__sub,
+.svc-banner__btn {
+  position: relative;
+  z-index: 1;
+}
+.svc-banner__title {
+  font-size: 40px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.svc-banner__sub {
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+.svc-banner__btn {
+  display: inline-block;
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  background: transparent;
+  padding: 16px 36px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.svc-banner__btn:hover {
+  background: #c9a84c;
+  color: #111;
+}
+
+.svc-faqs {
+  padding: 60px;
+  text-align: center;
+}
+.svc-faqs__label {
+  color: #c9a84c;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+.svc-faqs__sub {
+  color: #aaa;
+  font-size: 14px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.svc-faqs__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+  text-align: left;
+}
+.faq-item {
+  border-bottom: 1px solid #222;
+  padding: 18px 0;
+  cursor: pointer;
+}
+.faq-item__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #c9a84c;
+  font-weight: 600;
+}
+.faq-item__arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+.faq-item__arrow.open {
+  transform: rotate(180deg);
+}
+.faq-item__ans {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .svc-header__title { font-size: 28px; }
+  .svc-section { padding: 30px 20px; }
+  .svc-tailored { padding: 20px; }
+  .svc-divider { margin: 0 20px; }
+  .svc-faqs { padding: 40px 20px; }
+  .svc-faqs__grid { grid-template-columns: 1fr; }
+  .svc-banner__title { font-size: 26px; }
+}
