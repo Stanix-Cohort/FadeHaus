@@ -95,6 +95,7 @@ export default function ServicesPreview() {
               <ServiceCard
                 key={service.id}
                 image={service.image}
+                icon={service.icon}
                 title={service.title}
                 description={service.description}
               />
