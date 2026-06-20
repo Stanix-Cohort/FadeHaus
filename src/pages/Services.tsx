@@ -1,3 +1,13 @@
+import beardtrim from "../assets/images/beardTrim.svg";
+import buzzcut from "../assets/images/buzzcut.svg";
+import executivepackage from "../assets/images/executivepackage.svg";
+import lowfade from "../assets/images/lowfade.svg";
+import mainland from "../assets/images/mainland.svg";
+import skinfade from "../assets/images/skinfade.svg";
+import signaturegrooming from "../assets/images/signaturegrooming.svg";
+import taperfade from "../assets/images/taperfade.svg";
+import fullbeardsculpting from "../assets/images/fullbeardsculting.svg";
+import island from "../assets/images/island.svg";
 import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
 import "./Services.css";
@@ -45,37 +55,43 @@ const data: Record<string, TabData> = {
         name: "SKIN FADE",
         price: "₦5,000",
         desc: "Clean, sharp fade with seamless blending.",
-        img: "/assets/skin-fade.webp",
+        // img: "/assets/skinfade.svg",
+         img: skinfade,
       },
       {
         name: "LOW FADE",
         price: "₦4,500",
         desc: "Low, sharp fade with seamless blending.",
-        img: "/assets/low-fade.webp",
+        // img: "/assets/lowfade.svg",
+        img: lowfade,
       },
       {
         name: "TAPER FADE",
         price: "₦4,500",
         desc: "Stylish, sharp fade with seamless blending.",
-        img: "/assets/taper-fade.webp",
+        // img: "/assets/taperfade.svg",
+        img: taperfade,
       },
       {
         name: "BUZZ CUT",
         price: "₦3,500",
         desc: "Low, even & sharp with fixed level.",
-        img: "/assets/buzz-cut.webp",
+        // img: "/assets/buzzcut.svg",
+        img: buzzcut,
       },
       {
         name: "BEARD TRIM",
         price: "₦3,000",
         desc: "Sharp shaping and maintenance.",
-        img: "/assets/beard-trim.webp",
+        // img: "/assets/beardtrim.svg",
+        img: beardtrim,
       },
       {
         name: "FULL BEARD SCULPTING",
         price: "₦4,000",
         desc: "Sharp shaping and styling.",
-        img: "/assets/beard-sculpt.webp",
+        // img: "/assets/fullbeardsculpting.svg",
+        img: fullbeardsculpting,
       },
     ],
   },
@@ -86,13 +102,15 @@ const data: Record<string, TabData> = {
         name: "BEARD TRIM",
         price: "₦3,000",
         desc: "Sharp shaping and maintenance.",
-        img: "/assets/beard-trim.webp",
+        // img: "/assets/beardtrim.svg",
+        img: beardtrim,
       },
       {
         name: "FULL BEARD SCULPTING",
         price: "₦4,000",
         desc: "Sharp shaping and styling.",
-        img: "/assets/beard-sculpt.webp",
+        // img: "/assets/fullbeardsculpting.svg",
+        img: fullbeardsculpting,
       },
     ],
   },
@@ -103,13 +121,15 @@ const data: Record<string, TabData> = {
         name: "SIGNATURE GROOMING PACKAGE",
         price: "₦8,000",
         desc: "Haircut + Beard Grooming",
-        img: "/assets/signature.webp",
+        // img: "/assets/signature.svg",
+        img: signaturegrooming,
       },
       {
         name: "EXECUTIVE PACKAGE",
         price: "₦10,000",
         desc: "Haircut + Beard + Finishing Treatment",
-        img: "/assets/executive.webp",
+        // img: "/assets/executive.svg",
+        img: executivepackage,
       },
     ],
   },
@@ -120,17 +140,53 @@ const data: Record<string, TabData> = {
         name: "MAINLAND",
         price: "₦15,000",
         desc: "Professional grooming delivered to your location.",
-        img: "/assets/mainland.webp",
+        // img: "/assets/mainland.svg",
+        img: mainland,
       },
       {
         name: "ISLAND",
         price: "₦20,000",
         desc: "Premium home service across selected locations.",
-        img: "/assets/island.webp",
+        // img: "/assets/island.svg",
+        img: island,
       },
     ],
   },
 };
+
+// HAIRCUTS: {
+//   label: "Precision Haircuts",
+//   services: [
+//     { name: "SKIN FADE", price: "₦5,000", desc: "Clean, sharp fade with seamless blending.", img: skinfade },
+//     { name: "LOW FADE", price: "₦4,500", desc: "Low, sharp fade with seamless blending.", img: lowfade },
+//     { name: "TAPER FADE", price: "₦4,500", desc: "Stylish, sharp fade with seamless blending.", img: taperfade },
+//     { name: "BUZZ CUT", price: "₦3,500", desc: "Low, even & sharp with fixed level.", img: buzzcut },
+//   ],
+// },
+// "BEARD SERVICE": {
+//   label: "Beard Grooming",
+//   services: [
+//     { name: "BEARD TRIM", price: "₦3,000", desc: "Sharp shaping and maintenance.", img: beardtrim },
+//     { name: "FULL BEARD SCULPTING", price: "₦4,000", desc: "Sharp shaping and styling.", img: fullbeardsculpting },
+//   ],
+// },
+// "PREMIUM PACKAGE": {
+//   label: "Premium Packages",
+//   services: [
+//     { name: "SIGNATURE GROOMING PACKAGE", price: "₦8,000", desc: "Haircut + Beard Grooming", img: signaturegrooming },
+//     { name: "EXECUTIVE PACKAGE", price: "₦10,000", desc: "Haircut + Beard + Finishing Treatment", img: executivepackage },
+//   ],
+// },
+// "HOME SERVICE": {
+//   label: "Home Visits",
+//   services: [
+//     { name: "MAINLAND", price: "₦15,000", desc: "Professional grooming delivered to your location.", img: mainland },
+//     { name: "ISLAND", price: "₦20,000", desc: "Premium home service across selected locations.", img: island },
+  
+//   ],
+// },
+// };
+
 
 const faqs: FAQ[] = [
   {
