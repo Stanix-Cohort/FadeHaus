@@ -1,4 +1,4 @@
-import logo from "../../assets/images/FadeHause_Logo.svg";
+import logo from "../../assets/icons/FadeHause_Logo.svg";
 
 interface LogoProps {
   className?: string;
