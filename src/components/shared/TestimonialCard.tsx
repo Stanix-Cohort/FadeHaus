@@ -1,4 +1,4 @@
-import { IoStarSharp } from "react-icons/io5";
+import { IoStarSharp, IoStarHalfSharp, IoStarOutline } from "react-icons/io5";
 
 interface TestimonialCardProps {
   image: string;
@@ -13,6 +13,12 @@ export default function TestimonialCard({
   review,
   rating,
 }: TestimonialCardProps) {
+  const fullStars = Math.floor(rating);
+
+  const hasHalfStar = rating % 1 !== 0;
+
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
   return (
     <article
       className="
@@ -40,7 +46,7 @@ export default function TestimonialCard({
         gap-6
       "
     >
-      {/* Profile + Name + Rating */}
+      {/* Profile */}
 
       <div
         className="
@@ -50,8 +56,6 @@ export default function TestimonialCard({
           gap-4
         "
       >
-        {/* Avatar */}
-
         <img
           src={image}
           alt={name}
@@ -66,8 +70,6 @@ export default function TestimonialCard({
             shrink-0
           "
         />
-
-        {/* Name + Rating */}
 
         <div
           className="
@@ -93,9 +95,17 @@ export default function TestimonialCard({
             "
           >
             {Array.from({
-              length: rating,
+              length: fullStars,
             }).map((_, index) => (
-              <IoStarSharp key={index} size={18} color="#DCC9A1" />
+              <IoStarSharp key={`full-${index}`} size={18} color="#DCC9A1" />
+            ))}
+
+            {hasHalfStar && <IoStarHalfSharp size={18} color="#DCC9A1" />}
+
+            {Array.from({
+              length: emptyStars,
+            }).map((_, index) => (
+              <IoStarOutline key={`empty-${index}`} size={18} color="#DCC9A1" />
             ))}
           </div>
         </div>

@@ -12,6 +12,12 @@ import Haircut9 from "./images/Haircut_9.png";
 import Profile1 from "./images/profile_1.png";
 import Profile2 from "./images/profile_2.png";
 import Profile3 from "./images/profile_3.png";
+import Profile4 from "./images/profile_4.svg";
+
+import ClipperIcon from "./icons/clipper_icon.svg";
+import TrimmerIcon from "./icons/trimmer_icon.svg";
+import FullPackageIcon from "./icons/full_package_icon.svg";
+import MapPinIcon from "./icons/map-pin.svg";
 
 export const navLinks = [
   {
@@ -38,34 +44,37 @@ export const navLinks = [
 export const homeServices = [
   {
     id: 1,
+    icon: ClipperIcon,
     image: Haircut1,
     title: "PRECISION HAIRCUTS",
     description:
-      "Tailored cuts designed to match your style, face shape, and lifestyle.",
+      "Clean cuts tailored to your style, face shape, and personal preference.",
   },
 
   {
     id: 2,
+    icon: TrimmerIcon,
     image: Haircut2,
-    title: "FADE & TAPER STYLES",
-    description:
-      "Sharp fades and seamless tapers finished with exceptional attention to detail.",
+    title: "BEARD TRIM",
+    description: "Sharp lines, clean shaping, and expert beard maintenance.",
   },
 
   {
     id: 3,
+    icon: FullPackageIcon,
     image: Haircut3,
-    title: "BEARD GROOMING",
+    title: "PREMIUM PACKAGE",
     description:
-      "Professional beard shaping and maintenance for a clean refined look.",
+      "A complete grooming session combining haircut, beard care, and finishing touches.",
   },
 
   {
     id: 4,
+    icon: MapPinIcon,
     image: Haircut4,
-    title: "PREMIUM GROOMING",
+    title: "HOME SERVICES",
     description:
-      "Complete grooming experience designed to keep you looking your absolute best.",
+      "Professional FadeHaus grooming delivered to your preferred location.",
   },
 ];
 
@@ -75,7 +84,7 @@ export const testimonials = [
   {
     id: 1,
     image: Profile1,
-    name: "Emeka O.",
+    name: "Emeka, O.",
     review:
       "FadeHaus is easily one of the best. The attention to detail on my fade was outstanding, and the booking process was effortless.",
     rating: 5,
@@ -84,7 +93,7 @@ export const testimonials = [
   {
     id: 2,
     image: Profile2,
-    name: "Tunde A.",
+    name: "Tunde, A.",
     review:
       "Consistency is what keeps me coming back. Every cut is sharp, every appointment is on time, and the team always delivers top-quality service.",
     rating: 5,
@@ -93,9 +102,17 @@ export const testimonials = [
   {
     id: 3,
     image: Profile3,
-    name: "Michael E.",
+    name: "Michael, E.",
     review:
       "I booked FadeHaus for my brother after seeing their gallery online. The results exceeded expectations.",
+    rating: 4.5,
+  },
+  {
+    id: 4,
+    image: Profile4,
+    name: "Dami, A.",
+    review:
+      "I showed them a reference photo and they delivered exactly what I wanted. Clean environment, professional service, and a genuinely premium experience",
     rating: 4,
   },
 ];
@@ -138,6 +155,12 @@ export const faqs = [
 
   {
     id: 6,
+    question: "How do I book an appointment?",
+    answer:
+      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+  },
+  {
+    id: 7,
     question: "How do I book an appointment?",
     answer:
       "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",

@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+
 import Container from "../global/Container";
 
 import BackgroundImage from "../../assets/images/BG_Section_4.jpg";
@@ -5,10 +7,35 @@ import BackgroundImage from "../../assets/images/BG_Section_4.jpg";
 import { IoStarSharp } from "react-icons/io5";
 
 import TestimonialCard from "../shared/TestimonialCard";
+import TestimonialCarouselControls from "../shared/TestimonialCarouselControls";
 
 import { testimonials } from "../../assets/data";
 
 export default function Testimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const scroll = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+
+    if (!el) return;
+
+    const cardWidth = window.innerWidth >= 1024 ? 474 : 374;
+
+    const nextIndex =
+      direction === "right"
+        ? Math.min(currentIndex + 1, testimonials.length - 1)
+        : Math.max(currentIndex - 1, 0);
+
+    setCurrentIndex(nextIndex);
+
+    el.scrollTo({
+      left: nextIndex * cardWidth,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section
       className="
@@ -112,61 +139,52 @@ export default function Testimonials() {
                 lg:max-w-225
               "
             >
-              WHAT OUR CLIENTS ARE SAYING
+              WHAT OUR CUSTOMERS ARE SAYING
             </h2>
           </div>
 
-          {/* Mobile / Tablet */}
+          {/* Carousel */}
 
           <div
             className="
-    flex
-
-    gap-6
-
-    overflow-x-auto
-
-    w-full
-
-    scrollbar-hide
-
-    lg:hidden
-  "
+              w-full
+            "
           >
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                image={testimonial.image}
-                name={testimonial.name}
-                review={testimonial.review}
-                rating={testimonial.rating}
-              />
-            ))}
-          </div>
+            <div
+              ref={scrollRef}
+              className="
+                flex
 
-          {/* Desktop */}
+                gap-6
 
-          <div
-            className="
-            hidden
-            lg:flex
+                overflow-x-auto
 
-            justify-center
+                scrollbar-hide
 
-            gap-6
+                scroll-smooth
 
-            w-full
-  "
-          >
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                image={testimonial.image}
-                name={testimonial.name}
-                review={testimonial.review}
-                rating={testimonial.rating}
-              />
-            ))}
+                w-full
+              "
+            >
+              {testimonials.map((testimonial) => (
+                <TestimonialCard
+                  key={testimonial.id}
+                  image={testimonial.image}
+                  name={testimonial.name}
+                  review={testimonial.review}
+                  rating={testimonial.rating}
+                />
+              ))}
+            </div>
+
+            {/* Controls */}
+
+            <TestimonialCarouselControls
+              currentIndex={currentIndex}
+              total={testimonials.length}
+              onPrev={() => scroll("left")}
+              onNext={() => scroll("right")}
+            />
           </div>
 
           {/* Divider */}

@@ -407,3 +407,25 @@ h4,
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(30%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}

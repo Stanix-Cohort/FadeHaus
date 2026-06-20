@@ -79,85 +79,107 @@ export default function GalleryPreview() {
 
           <div
             className="
-              grid
+                grid
 
-              grid-cols-3
+                grid-cols-[1fr_1.2fr_1fr]
 
-              gap-2
+                gap-2
 
-              w-full
+                w-full
 
-              max-w-75
+                max-w-95
 
-              lg:hidden
+                lg:hidden
             "
           >
-            <img
-              src={galleryImages[0]}
-              alt=""
+            {/* Left Column */}
+
+            <div
               className="
-                w-full
+                flex
+                flex-col
+
+                gap-2
+                "
+            >
+              <img
+                src={galleryImages[0]}
+                alt=""
+                className="
                 h-23.75
+                w-full
 
                 object-cover
 
                 rounded-xs
-              "
-            />
+            "
+              />
 
-            <img
-              src={galleryImages[1]}
-              alt=""
-              className="
-                w-full
+              <img
+                src={galleryImages[1]}
+                alt=""
+                className="
                 h-23.75
+                w-full
 
                 object-cover
 
                 rounded-xs
-              "
-            />
+            "
+              />
+            </div>
+
+            {/* Center Tall Image */}
 
             <img
               src={galleryImages[2]}
               alt=""
               className="
-                row-span-2
-
-                w-full
                 h-49.5
-
-                object-cover
-
-                rounded-xs
-              "
-            />
-
-            <img
-              src={galleryImages[3]}
-              alt=""
-              className="
                 w-full
-                h-23.75
 
                 object-cover
 
                 rounded-xs
-              "
+                "
             />
 
-            <img
-              src={galleryImages[4]}
-              alt=""
+            {/* Right Column */}
+
+            <div
               className="
-                w-full
+                flex
+                flex-col
+
+                gap-2
+                "
+            >
+              <img
+                src={galleryImages[3]}
+                alt=""
+                className="
                 h-23.75
+                w-full
 
                 object-cover
 
                 rounded-xs
-              "
-            />
+            "
+              />
+
+              <img
+                src={galleryImages[4]}
+                alt=""
+                className="
+                h-23.75
+                w-full
+
+                object-cover
+
+                rounded-xs
+            "
+              />
+            </div>
           </div>
 
           {/* DESKTOP */}

@@ -18,7 +18,9 @@ export default function NavLinks({
           key={link.label}
           to={link.href}
           onClick={onNavigate}
-          className={({ }) => `
+          className={`
+            group
+
             ${
               mobile
                 ? `
@@ -48,9 +50,9 @@ export default function NavLinks({
             <>
               {link.label}
 
-              {!mobile && isActive && (
+              {!mobile && (
                 <span
-                  className="
+                  className={`
                     absolute
 
                     left-0
@@ -60,8 +62,13 @@ export default function NavLinks({
 
                     h-0.5
 
-                    bg-white
-                  "
+                    transition-colors
+                    duration-200
+
+                    ${isActive ? "bg-white" : "bg-transparent"}
+
+                    group-hover:bg-(--btn-link-hover)
+                  `}
                 />
               )}
             </>

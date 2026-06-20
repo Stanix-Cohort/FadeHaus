@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import Logo from "../global/Logo";
 import Container from "../global/Container";
@@ -10,11 +11,37 @@ import MobileSidebar from "./MobileSidebar";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // All pages except Home stay filled
+
+    if (location.pathname !== "/") {
+      setIsScrolled(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight * 0.8;
+
+      setIsScrolled(window.scrollY > heroHeight);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location.pathname]);
 
   return (
     <>
       <nav
-        className="
+        className={`
           fixed
           left-0
           right-0
@@ -23,8 +50,11 @@ export default function Navbar() {
 
           z-50
 
-         bg-neutral-800
-        "
+          transition-all
+          duration-500
+
+          ${isScrolled ? "bg-neutral-800 shadow-md" : "bg-transparent"}
+        `}
       >
         <Container>
           <div
@@ -70,18 +100,12 @@ export default function Navbar() {
 
             {/* Mobile / Tablet */}
 
-            <div
-              className="
-                lg:hidden
-              "
-            >
+            <div className="lg:hidden">
               <HamburgerButton onClick={() => setIsMenuOpen(true)} />
             </div>
           </div>
         </Container>
       </nav>
-
-      {/* Sidebar */}
 
       <MobileSidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </>

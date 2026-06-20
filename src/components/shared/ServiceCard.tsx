@@ -1,31 +1,30 @@
-import ClipperIcon from "../../assets/icons/clipper_icon.svg";
-
 interface ServiceCardProps {
   image: string;
+  icon: string;
   title: string;
   description: string;
 }
 
 export default function ServiceCard({
   image,
+  icon,
   title,
   description,
 }: ServiceCardProps) {
   return (
     <article
       className="
-        min-w-75
         w-75
+        min-w-75
+        shrink-0
 
         flex
         flex-col
 
-        gap-2
-
-        pb-2
-
         border-b
         border-(--color-brand-300)
+
+        pb-2
       "
     >
       <img
@@ -43,25 +42,34 @@ export default function ServiceCard({
 
       <div
         className="
+          mt-2
+
           flex
           items-center
 
           gap-2
+
+          min-h-12
         "
       >
         <img
-          src={ClipperIcon}
+          src={icon}
           alt=""
           className="
             w-7.5
             h-7.5
+
+            shrink-0
           "
         />
 
         <h3
           className="
             heading-4
+
             text-brand
+
+            leading-tight
           "
         >
           {title}
@@ -70,8 +78,12 @@ export default function ServiceCard({
 
       <p
         className="
+          mt-2
+
           text-med-md
           text-white
+
+          grow
         "
       >
         {description}
@@ -79,7 +91,7 @@ export default function ServiceCard({
 
       <button
         className="
-          mt-2
+          mt-4
 
           w-full
           h-10.75
@@ -91,6 +103,11 @@ export default function ServiceCard({
           text-neutral-900
 
           text-med-md
+
+          transition-all
+          duration-300
+
+          hover:bg-(--btn-primary-hover)
         "
       >
         BOOK NOW
