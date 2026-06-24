@@ -63,27 +63,44 @@
 }
 
 .svc-card {
-  border: 1px solid #333;
-  padding: 20px;
+  border: 1px solid #C9A84C;
+  /* padding: 20px; */
+  /* padding: 0 20px 20px 20px; */
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}  
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: center;
+  /* border: 1px solid #C9A84C; */
+  text-align: center;
+  /* padding: 0 20px 20px 20px; */
 }
+
 .svc-card__img-wrap {
-  width: 275px;
-  height: 200px;
+  width: 272px;
+  height: 400px;
   overflow: hidden;
   margin-bottom: 16px;
+  margin-top: 0;
+  padding-top: 0px;
+  display: block;
+  border-radius: 0;
 }
 .svc-card__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.9) contrast(1.1) saturate(0.85);
 }
 .svc-card__name {
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 25px;
+  font-weight: 900;
   color: #c9a84c;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -92,14 +109,16 @@
 .svc-card__price {
   font-size: 28px;
   font-weight: 800;
-  color: #fff;
+  color: #C9A84C;
   margin-bottom: 12px;
 }
 .svc-card__desc {
-  font-size: 13px;
-  color: #aaa;
+  font-size: 20px;
+  color: #fff;
   line-height: 1.6;
   margin-bottom: 20px;
+  font-weight: 900;
+  font-family: 'Georgia', serif;
 }
 .svc-card__btn {
   width: 100%;
@@ -246,4 +265,53 @@
   .svc-faqs { padding: 40px 20px; }
   .svc-faqs__grid { grid-template-columns: 1fr; }
   .svc-banner__title { font-size: 26px; }
+}
+
+
+
+@media (max-width: 1024px) {
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .svc-card__img-wrap {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .svc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.svc-tabs {
+  border-bottom: 1px solid #FFD700;
+  margin-bottom: 30px;
+}
+
+
+
+.svc-card__img-wrap {
+  overflow: hidden; /* required so the zoomed image doesn't spill past the card border */
+}
+
+.svc-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.1) saturate(0.85);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.svc-card:hover .svc-card__img {
+  transform: scale(1.1);
+  filter: brightness(0.75) contrast(1.1) saturate(0.85);
 }

@@ -1,13 +1,13 @@
-import beardtrim from "../assets/images/beardTrim.svg";
-import buzzcut from "../assets/images/buzzcut.svg";
-import executivepackage from "../assets/images/executivepackage.svg";
-import lowfade from "../assets/images/lowfade.svg";
-import mainland from "../assets/images/mainland.svg";
-import skinfade from "../assets/images/skinfade.svg";
-import signaturegrooming from "../assets/images/signaturegrooming.svg";
-import taperfade from "../assets/images/taperfade.svg";
+import beardtrim from "../assets/images/beardTrim.png";
+import buzzcut from "../assets/images/buzzcut.png";
+import executivepackage from "../assets/images/executivepackage.png";
+import lowfade from "../assets/images/lowfade.png";
+import mainland from "../assets/images/mainland.png";
+import skinfade from "../assets/images/skinfade.png";
+import signaturegrooming from "../assets/images/signaturegrooming.png";
+import taperfade from "../assets/images/taperfade.png";
 import fullbeardsculpting from "../assets/images/fullbeardsculting.svg";
-import island from "../assets/images/island.svg";
+import island from "../assets/images/island.png";
 import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -30,6 +30,9 @@ const tabs: string[] = [
   "PREMIUM PACKAGE",
   "HOME SERVICE",
 ];
+
+
+// {/* <hr style={{ border: 'none', borderTop: '1px solid #333', margin: '0 60px' }} /> */}
 
 interface Service {
   name: string;
@@ -61,36 +64,36 @@ const data: Record<string, TabData> = {
       },
       {
         name: "LOW FADE",
-        price: "₦4,500",
         desc: "Low, sharp fade with seamless blending.",
+        price: "₦4,500",
         // img: "/assets/lowfade.svg",
         img: lowfade,
       },
       {
         name: "TAPER FADE",
-        price: "₦4,500",
         desc: "Stylish, sharp fade with seamless blending.",
         // img: "/assets/taperfade.svg",
+        price: "₦4,500",
         img: taperfade,
       },
       {
         name: "BUZZ CUT",
-        price: "₦3,500",
         desc: "Low, even & sharp with fixed level.",
+        price: "₦3,500",
         // img: "/assets/buzzcut.svg",
         img: buzzcut,
       },
       {
         name: "BEARD TRIM",
-        price: "₦3,000",
         desc: "Sharp shaping and maintenance.",
+         price: "₦3,000",
         // img: "/assets/beardtrim.svg",
         img: beardtrim,
       },
       {
         name: "FULL BEARD SCULPTING",
-        price: "₦4,000",
         desc: "Sharp shaping and styling.",
+        price: "₦4,000",
         // img: "/assets/fullbeardsculpting.svg",
         img: fullbeardsculpting,
       },
@@ -101,15 +104,15 @@ const data: Record<string, TabData> = {
     services: [
       {
         name: "BEARD TRIM",
-        price: "₦3,000",
         desc: "Sharp shaping and maintenance.",
         // img: "/assets/beardtrim.svg",
+        price: "₦3,000",
         img: beardtrim,
       },
       {
         name: "FULL BEARD SCULPTING",
-        price: "₦4,000",
         desc: "Sharp shaping and styling.",
+        price: "₦4,000",
         // img: "/assets/fullbeardsculpting.svg",
         img: fullbeardsculpting,
       },
@@ -155,38 +158,6 @@ const data: Record<string, TabData> = {
   },
 };
 
-// HAIRCUTS: {
-//   label: "Precision Haircuts",
-//   services: [
-//     { name: "SKIN FADE", price: "₦5,000", desc: "Clean, sharp fade with seamless blending.", img: skinfade },
-//     { name: "LOW FADE", price: "₦4,500", desc: "Low, sharp fade with seamless blending.", img: lowfade },
-//     { name: "TAPER FADE", price: "₦4,500", desc: "Stylish, sharp fade with seamless blending.", img: taperfade },
-//     { name: "BUZZ CUT", price: "₦3,500", desc: "Low, even & sharp with fixed level.", img: buzzcut },
-//   ],
-// },
-// "BEARD SERVICE": {
-//   label: "Beard Grooming",
-//   services: [
-//     { name: "BEARD TRIM", price: "₦3,000", desc: "Sharp shaping and maintenance.", img: beardtrim },
-//     { name: "FULL BEARD SCULPTING", price: "₦4,000", desc: "Sharp shaping and styling.", img: fullbeardsculpting },
-//   ],
-// },
-// "PREMIUM PACKAGE": {
-//   label: "Premium Packages",
-//   services: [
-//     { name: "SIGNATURE GROOMING PACKAGE", price: "₦8,000", desc: "Haircut + Beard Grooming", img: signaturegrooming },
-//     { name: "EXECUTIVE PACKAGE", price: "₦10,000", desc: "Haircut + Beard + Finishing Treatment", img: executivepackage },
-//   ],
-// },
-// "HOME SERVICE": {
-//   label: "Home Visits",
-//   services: [
-//     { name: "MAINLAND", price: "₦15,000", desc: "Professional grooming delivered to your location.", img: mainland },
-//     { name: "ISLAND", price: "₦20,000", desc: "Premium home service across selected locations.", img: island },
-  
-//   ],
-// },
-// };
 
 
 const faqs: FAQ[] = [
@@ -218,8 +189,8 @@ const ServiceCard = ({ name, price, desc, img }: Service) => (
       <img src={img} alt={name} loading="lazy" className="svc-card__img" />
     </div>
     <h3 className="svc-card__name">{name}</h3>
-    <p className="svc-card__price">{price}</p>
     <p className="svc-card__desc">{desc}</p>
+    <p className="svc-card__price">{price}</p>
     <button className="svc-card__btn" onClick={() => openWhatsApp(name)}>
       Book This
     </button>
