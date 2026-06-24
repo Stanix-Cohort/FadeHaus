@@ -18,6 +18,7 @@ import { homeServices } from "../../assets/data";
 
 export default function ServicesPreview() {
   const mobileSwiperRef = useRef<any>(null);
+  const desktopSwiperRef = useRef<any>(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -105,7 +106,7 @@ export default function ServicesPreview() {
           lg:mb-12
         "
       >
-        {/* Mobile / Tablet */}
+        {/* Mobile */}
 
         <div className="lg:hidden">
           <Swiper
@@ -121,18 +122,10 @@ export default function ServicesPreview() {
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.activeIndex);
             }}
-            className="
-              !px-4
-              sm:!px-6
-            "
+            className="!px-0"
           >
             {homeServices.map((service) => (
-              <SwiperSlide
-                key={service.id}
-                className="
-                  !w-auto
-                "
-              >
+              <SwiperSlide key={service.id} className="!w-auto">
                 <ServiceCard
                   image={service.image}
                   icon={service.icon}
@@ -156,14 +149,15 @@ export default function ServicesPreview() {
                 }}
                 spaceBetween={24}
                 slidesPerView={"auto"}
+                onSwiper={(swiper) => {
+                  desktopSwiperRef.current = swiper;
+                }}
+                onSlideChange={(swiper) => {
+                  setActiveIndex(swiper.activeIndex);
+                }}
               >
                 {homeServices.map((service) => (
-                  <SwiperSlide
-                    key={service.id}
-                    className="
-                      !w-auto
-                    "
-                  >
+                  <SwiperSlide key={service.id} className="!w-auto">
                     <ServiceCard
                       image={service.image}
                       icon={service.icon}
@@ -183,9 +177,7 @@ export default function ServicesPreview() {
           className="
             mt-8
 
-            px-4
-            sm:px-6
-            md:px-8
+            px-0
 
             lg:px-0
           "
@@ -194,8 +186,20 @@ export default function ServicesPreview() {
             <CarouselControls
               currentIndex={activeIndex}
               total={homeServices.length}
-              onPrev={() => mobileSwiperRef.current?.slidePrev()}
-              onNext={() => mobileSwiperRef.current?.slideNext()}
+              onPrev={() => {
+                if (window.innerWidth < 1024) {
+                  mobileSwiperRef.current?.slidePrev();
+                } else {
+                  desktopSwiperRef.current?.slidePrev();
+                }
+              }}
+              onNext={() => {
+                if (window.innerWidth < 1024) {
+                  mobileSwiperRef.current?.slideNext();
+                } else {
+                  desktopSwiperRef.current?.slideNext();
+                }
+              }}
             />
           </Container>
         </div>
@@ -268,8 +272,6 @@ export default function ServicesPreview() {
             </button>
           </Link>
         </div>
-
-        {/* Divider */}
 
         <div
           className="
