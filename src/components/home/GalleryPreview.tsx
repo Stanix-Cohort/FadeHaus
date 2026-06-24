@@ -11,8 +11,11 @@ export default function GalleryPreview() {
       className="
         bg-neutral-800
 
-        py-12
-        lg:py-20
+        pt-8
+        pb-12
+
+        lg:pt-16
+        lg:pb-20
       "
     >
       <Container>
@@ -22,8 +25,6 @@ export default function GalleryPreview() {
             flex-col
 
             items-center
-
-            gap-10
           "
         >
           {/* Header */}
@@ -36,6 +37,9 @@ export default function GalleryPreview() {
               items-center
 
               gap-4
+
+              mb-8
+              lg:mb-10
             "
           >
             <div
@@ -79,20 +83,22 @@ export default function GalleryPreview() {
 
           <div
             className="
-                grid
+              grid
 
-                grid-cols-[1fr_1.2fr_1fr]
+              grid-cols-[1fr_1.2fr_1fr]
 
-                gap-2
+              gap-2
 
-                w-full
+              w-full
 
-                max-w-95
+              max-w-95
 
-                lg:hidden
+              lg:hidden
+
+              mb-8
             "
           >
-            {/* Left Column */}
+            {/* Left */}
 
             <div
               className="
@@ -100,51 +106,108 @@ export default function GalleryPreview() {
                 flex-col
 
                 gap-2
+              "
+            >
+              <div
+                className="
+                  overflow-hidden
+
+                  rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
                 "
+              >
+                <img
+                  src={galleryImages[0]}
+                  alt="FadeHaus haircut result"
+                  className="
+                    h-23.75
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
+
+              <div
+                className="
+                  overflow-hidden
+
+                  rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
+                "
+              >
+                <img
+                  src={galleryImages[1]}
+                  alt="FadeHaus grooming result"
+                  className="
+                    h-23.75
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
+            </div>
+
+            {/* Center */}
+
+            <div
+              className="
+                overflow-hidden
+
+                rounded-xs
+
+                border-4
+                border-transparent
+
+                transition-all
+                duration-300
+
+                hover:border-(--color-brand-300)
+              "
             >
               <img
-                src={galleryImages[0]}
-                alt=""
+                src={galleryImages[2]}
+                alt="FadeHaus premium transformation"
                 className="
-                h-23.75
-                w-full
+                  h-49.5
+                  w-full
 
-                object-cover
+                  object-cover
 
-                rounded-xs
-            "
-              />
+                  transition-transform
+                  duration-500
 
-              <img
-                src={galleryImages[1]}
-                alt=""
-                className="
-                h-23.75
-                w-full
-
-                object-cover
-
-                rounded-xs
-            "
+                  hover:scale-105
+                "
               />
             </div>
 
-            {/* Center Tall Image */}
-
-            <img
-              src={galleryImages[2]}
-              alt=""
-              className="
-                h-49.5
-                w-full
-
-                object-cover
-
-                rounded-xs
-                "
-            />
-
-            {/* Right Column */}
+            {/* Right */}
 
             <div
               className="
@@ -152,33 +215,71 @@ export default function GalleryPreview() {
                 flex-col
 
                 gap-2
-                "
+              "
             >
-              <img
-                src={galleryImages[3]}
-                alt=""
+              <div
                 className="
-                h-23.75
-                w-full
+                  overflow-hidden
 
-                object-cover
+                  rounded-xs
 
-                rounded-xs
-            "
-              />
+                  border-4
+                  border-transparent
 
-              <img
-                src={galleryImages[4]}
-                alt=""
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
+                "
+              >
+                <img
+                  src={galleryImages[3]}
+                  alt="FadeHaus fade haircut"
+                  className="
+                    h-23.75
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
+
+              <div
                 className="
-                h-23.75
-                w-full
+                  overflow-hidden
 
-                object-cover
+                  rounded-xs
 
-                rounded-xs
-            "
-              />
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
+                "
+              >
+                <img
+                  src={galleryImages[4]}
+                  alt="FadeHaus beard grooming"
+                  className="
+                    h-23.75
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
             </div>
           </div>
 
@@ -196,9 +297,11 @@ export default function GalleryPreview() {
               grid-cols-[1fr_1.3fr_1fr]
 
               gap-4
+
+              mb-10
             "
           >
-            {/* Left Column */}
+            {/* Left */}
 
             <div
               className="
@@ -208,49 +311,106 @@ export default function GalleryPreview() {
                 gap-4
               "
             >
-              <img
-                src={galleryImages[0]}
-                alt=""
+              <div
                 className="
-                  h-60
-                  w-full
-
-                  object-cover
+                  overflow-hidden
 
                   rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
                 "
-              />
+              >
+                <img
+                  src={galleryImages[0]}
+                  alt="FadeHaus haircut result"
+                  className="
+                    h-60
+                    w-full
 
-              <img
-                src={galleryImages[1]}
-                alt=""
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
+
+              <div
                 className="
-                  h-60
-                  w-full
-
-                  object-cover
+                  overflow-hidden
 
                   rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
                 "
-              />
+              >
+                <img
+                  src={galleryImages[1]}
+                  alt="FadeHaus grooming result"
+                  className="
+                    h-60
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
             </div>
 
             {/* Center */}
 
-            <img
-              src={galleryImages[2]}
-              alt=""
+            <div
               className="
-                h-125
-                w-full
-
-                object-cover
+                overflow-hidden
 
                 rounded-xs
-              "
-            />
 
-            {/* Right Column */}
+                border-4
+                border-transparent
+
+                transition-all
+                duration-300
+
+                hover:border-(--color-brand-300)
+              "
+            >
+              <img
+                src={galleryImages[2]}
+                alt="FadeHaus premium transformation"
+                className="
+                  h-125
+                  w-full
+
+                  object-cover
+
+                  transition-transform
+                  duration-500
+
+                  hover:scale-105
+                "
+              />
+            </div>
+
+            {/* Right */}
 
             <div
               className="
@@ -260,31 +420,69 @@ export default function GalleryPreview() {
                 gap-4
               "
             >
-              <img
-                src={galleryImages[3]}
-                alt=""
+              <div
                 className="
-                  h-60
-                  w-full
-
-                  object-cover
+                  overflow-hidden
 
                   rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
                 "
-              />
+              >
+                <img
+                  src={galleryImages[3]}
+                  alt="FadeHaus fade haircut"
+                  className="
+                    h-60
+                    w-full
 
-              <img
-                src={galleryImages[4]}
-                alt=""
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
+
+              <div
                 className="
-                  h-60
-                  w-full
-
-                  object-cover
+                  overflow-hidden
 
                   rounded-xs
+
+                  border-4
+                  border-transparent
+
+                  transition-all
+                  duration-300
+
+                  hover:border-(--color-brand-300)
                 "
-              />
+              >
+                <img
+                  src={galleryImages[4]}
+                  alt="FadeHaus beard grooming"
+                  className="
+                    h-60
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-500
+
+                    hover:scale-105
+                  "
+                />
+              </div>
             </div>
           </div>
 
@@ -339,31 +537,21 @@ export default function GalleryPreview() {
 
                 bg-(--color-brand-300)
 
-              text-neutral-900
+                text-neutral-900
 
                 cursor-pointer
+
                 transition-all
                 duration-300
 
                 hover:bg-(--btn-primary-hover)
-              hover:text-neutral-900
 
-                text-med-lg"
+                text-med-lg
+              "
             >
               View Gallery
             </button>
           </div>
-
-          {/* Divider */}
-
-          <div
-            className="
-              w-full
-              h-px
-
-              bg-neutral-700
-            "
-          />
         </div>
       </Container>
     </section>

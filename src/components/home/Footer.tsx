@@ -1,16 +1,25 @@
+import { Link } from "react-router-dom";
+
 import Container from "../global/Container";
 
 import Logo from "../../assets/icons/FadeHause_Logo.svg";
-
 import MapPin from "../../assets/icons/map-pin.svg";
 
 import { FaWhatsapp } from "react-icons/fa";
-
 import { FiInstagram } from "react-icons/fi";
-
 import { FaTiktok } from "react-icons/fa6";
 
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
+
 export default function Footer() {
+  const openWhatsApp = () => {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20FadeHaus,%20I'd%20like%20to%20book%20an%20appointment.`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
   return (
     <footer
       className="
@@ -42,16 +51,18 @@ export default function Footer() {
           >
             {/* Logo */}
 
-            <img
-              src={Logo}
-              alt="FadeHaus"
-              className="
-                w-40
-                h-auto
+            <Link to="/" aria-label="Go to Home Page">
+              <img
+                src={Logo}
+                alt="FadeHaus"
+                className="
+                  w-40
+                  h-auto
 
-                lg:w-52.25
-              "
-            />
+                  lg:w-52.25
+                "
+              />
+            </Link>
 
             {/* Description */}
 
@@ -94,11 +105,11 @@ export default function Footer() {
 
               <span
                 className="
-                  text-semibold-caption
+                  text-med-sm
                   text-white
                 "
               >
-                address, lagos, Nigeria
+                123 Adeola Odeku St, VI, Lagos.
               </span>
 
               <a
@@ -116,13 +127,15 @@ export default function Footer() {
                   hover:text-(--btn-link-hover)
                 "
               >
-                Get Directions link
+                Get Directions
               </a>
             </div>
 
             {/* WhatsApp Button */}
 
             <button
+              onClick={openWhatsApp}
+              aria-label="Book appointment on WhatsApp"
               className="
                 w-full
                 max-w-71
@@ -209,12 +222,13 @@ export default function Footer() {
                     lg:gap-y-3
                   "
                 >
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="
                       text-[11px]
                       font-semibold
                       tracking-wider
+
                       text-white
 
                       lg:text-semibold-caption
@@ -223,14 +237,15 @@ export default function Footer() {
                     "
                   >
                     HOME
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/services"
                     className="
                       text-[11px]
                       font-semibold
                       tracking-wider
+
                       text-white
 
                       lg:text-semibold-caption
@@ -239,14 +254,15 @@ export default function Footer() {
                     "
                   >
                     SERVICES
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/gallery"
                     className="
                       text-[11px]
                       font-semibold
                       tracking-wider
+
                       text-white
 
                       lg:text-semibold-caption
@@ -255,14 +271,15 @@ export default function Footer() {
                     "
                   >
                     GALLERY
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/contact"
                     className="
                       text-[11px]
                       font-semibold
                       tracking-wider
+
                       text-white
 
                       lg:text-semibold-caption
@@ -271,7 +288,7 @@ export default function Footer() {
                     "
                   >
                     CONTACT
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -325,6 +342,7 @@ export default function Footer() {
                         text-[11px]
                         font-semibold
                         tracking-wider
+
                         text-white
 
                         lg:text-semibold-caption
@@ -349,6 +367,7 @@ export default function Footer() {
                         text-[11px]
                         font-semibold
                         tracking-wider
+
                         text-white
 
                         lg:text-semibold-caption
@@ -373,12 +392,13 @@ export default function Footer() {
                         text-[11px]
                         font-semibold
                         tracking-wider
+
                         text-white
 
                         lg:text-semibold-caption
                       "
                     >
-                      +234 0123456789
+                      {WHATSAPP_NUMBER}
                     </span>
                   </div>
                 </div>

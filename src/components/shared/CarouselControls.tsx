@@ -1,39 +1,36 @@
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 interface Props {
-  currentIndex: number;
-  total: number;
   onPrev: () => void;
   onNext: () => void;
+  currentIndex: number;
+  total: number;
 }
 
-export default function TestimonialCarouselControls({
-  currentIndex,
-  total,
+export default function CarouselControls({
   onPrev,
   onNext,
+  currentIndex,
+  total,
 }: Props) {
   return (
     <div
       className="
         flex
         items-center
-        justify-center
+        justify-between
 
         w-full
-        
-        mt-8
-        max-w-300
-        mx-auto
       "
     >
-      {/* Left */}
+      {/* LEFT ARROW */}
 
       <button
         onClick={onPrev}
+        aria-label="Previous Slide"
         className="
-          w-7.5
-          h-7.5
+          w-8
+          h-8
 
           border
           border-(--color-brand-300)
@@ -51,21 +48,24 @@ export default function TestimonialCarouselControls({
           hover:text-(--btn-link-hover)
         "
       >
-        <FiChevronLeft size={16} />
+        <FiChevronLeft size={18} />
       </button>
 
-      {/* Indicators */}
+      {/* MOBILE INDICATORS */}
 
       <div
         className="
           flex
+          lg:hidden
+
           items-center
           justify-center
+
           flex-1
 
           gap-2
 
-          mx-6
+          mx-4
         "
       >
         {Array.from({ length: total }).map((_, index) => (
@@ -73,28 +73,32 @@ export default function TestimonialCarouselControls({
             key={index}
             className={`
               h-0.5
-              w-6
 
               transition-all
               duration-300
 
               ${
                 index === currentIndex
-                  ? "bg-(--color-brand-300)"
-                  : "bg-neutral-500"
+                  ? "w-10 bg-(--color-brand-300)"
+                  : "w-4 bg-neutral-500"
               }
             `}
           />
         ))}
       </div>
 
-      {/* Right */}
+      {/* DESKTOP SPACER */}
+
+      <div className="hidden lg:block flex-1" />
+
+      {/* RIGHT ARROW */}
 
       <button
         onClick={onNext}
+        aria-label="Next Slide"
         className="
-          w-7.5
-          h-7.5
+          w-8
+          h-8
 
           border
           border-(--color-brand-300)
@@ -112,7 +116,7 @@ export default function TestimonialCarouselControls({
           hover:text-(--btn-link-hover)
         "
       >
-        <FiChevronRight size={16} />
+        <FiChevronRight size={18} />
       </button>
     </div>
   );

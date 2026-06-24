@@ -1,47 +1,25 @@
+import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
-import { useEffect, useRef, useState } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, A11y } from "swiper/modules";
+
+import "swiper/css";
 
 import Container from "../global/Container";
 
 import ServiceCard from "../shared/ServiceCard";
-import ScrollControls from "../shared/ScrollControls";
+import CarouselControls from "../shared/CarouselControls";
 
 import ScissorsIcon from "../../assets/icons/scissors-icon.svg";
 
 import { homeServices } from "../../assets/data";
 
 export default function ServicesPreview() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const mobileSwiperRef = useRef<any>(null);
 
-  const [showLeft, setShowLeft] = useState(false);
-  const [showRight, setShowRight] = useState(false);
-
-  const handleScroll = () => {
-    const el = scrollRef.current;
-
-    if (!el) return;
-
-    setShowLeft(el.scrollLeft > 10);
-
-    setShowRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  };
-
-  const scroll = (direction: "left" | "right") => {
-    scrollRef.current?.scrollBy({
-      left: direction === "right" ? 350 : -350,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
-    handleScroll();
-
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section
@@ -53,6 +31,8 @@ export default function ServicesPreview() {
         lg:py-20
       "
     >
+      {/* Header */}
+
       <Container>
         <div
           className="
@@ -61,144 +41,205 @@ export default function ServicesPreview() {
 
             items-center
 
-            gap-10
+            gap-4
+
+            mb-10
+            lg:mb-12
           "
         >
-          {/* Header */}
-
           <div
             className="
               flex
-              flex-col
-
               items-center
 
-              gap-4
+              gap-2
             "
           >
-            <div
+            <img
+              src={ScissorsIcon}
+              alt=""
               className="
-                flex
-                items-center
-
-                gap-2
+                w-5
+                h-5
               "
-            >
-              <img
-                src={ScissorsIcon}
-                alt=""
-                className="
-                  w-5
-                  h-5
-                "
-              />
-
-              <span
-                className="
-                  text-bold-lg
-                  text-(--color-brand-700)
-                "
-              >
-                OUR SERVICES
-              </span>
-
-              <img
-                src={ScissorsIcon}
-                alt=""
-                className="
-                  w-5
-                  h-5
-                "
-              />
-            </div>
-
-            <h2
-              className="
-                gallery-heading
-
-                text-center
-
-                max-w-225
-              "
-            >
-              PREMIUM GROOMING TAILORED TO YOUR STYLE.
-            </h2>
-          </div>
-
-          {/* Cards */}
-
-          <div className="relative w-full">
-            <ScrollControls
-              showLeft={showLeft}
-              showRight={showRight}
-              onLeft={() => scroll("left")}
-              onRight={() => scroll("right")}
             />
 
-            <div
-              ref={scrollRef}
-              onScroll={handleScroll}
+            <span
               className="
-                flex
-
-                gap-6
-
-                overflow-x-auto
-
-                scrollbar-hide
-
-                w-full
+                text-bold-lg
+                text-(--color-brand-700)
               "
             >
-              {homeServices.map((service) => (
+              OUR SERVICES
+            </span>
+
+            <img
+              src={ScissorsIcon}
+              alt=""
+              className="
+                w-5
+                h-5
+              "
+            />
+          </div>
+
+          <h2
+            className="
+              gallery-heading
+
+              text-center
+
+              max-w-225
+            "
+          >
+            PREMIUM GROOMING TAILORED TO YOUR STYLE.
+          </h2>
+        </div>
+      </Container>
+
+      {/* Carousel */}
+
+      <div
+        className="
+          mb-10
+          lg:mb-12
+        "
+      >
+        {/* Mobile / Tablet */}
+
+        <div className="lg:hidden">
+          <Swiper
+            modules={[Keyboard, A11y]}
+            keyboard={{
+              enabled: true,
+            }}
+            spaceBetween={24}
+            slidesPerView={"auto"}
+            onSwiper={(swiper) => {
+              mobileSwiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper.activeIndex);
+            }}
+            className="
+              !px-4
+              sm:!px-6
+            "
+          >
+            {homeServices.map((service) => (
+              <SwiperSlide
+                key={service.id}
+                className="
+                  !w-auto
+                "
+              >
                 <ServiceCard
-                  key={service.id}
                   image={service.image}
                   icon={service.icon}
                   title={service.title}
                   description={service.description}
                 />
-              ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop */}
+
+        <div className="hidden lg:block">
+          <Container>
+            <div className="overflow-hidden">
+              <Swiper
+                modules={[Keyboard, A11y]}
+                keyboard={{
+                  enabled: true,
+                }}
+                spaceBetween={24}
+                slidesPerView={"auto"}
+              >
+                {homeServices.map((service) => (
+                  <SwiperSlide
+                    key={service.id}
+                    className="
+                      !w-auto
+                    "
+                  >
+                    <ServiceCard
+                      image={service.image}
+                      icon={service.icon}
+                      title={service.title}
+                      description={service.description}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-          </div>
+          </Container>
+        </div>
 
-          {/* Footer */}
+        {/* Controls */}
 
-          <div
+        <div
+          className="
+            mt-8
+
+            px-4
+            sm:px-6
+            md:px-8
+
+            lg:px-0
+          "
+        >
+          <Container>
+            <CarouselControls
+              currentIndex={activeIndex}
+              total={homeServices.length}
+              onPrev={() => mobileSwiperRef.current?.slidePrev()}
+              onNext={() => mobileSwiperRef.current?.slideNext()}
+            />
+          </Container>
+        </div>
+      </div>
+
+      {/* Footer */}
+
+      <Container>
+        <div
+          className="
+            flex
+            flex-col
+
+            lg:flex-row
+
+            items-center
+
+            justify-between
+
+            gap-6
+
+            mb-14
+            lg:mb-20
+          "
+        >
+          <p
             className="
-              w-full
+              text-med-caption
 
-              flex
-              flex-col
+              text-center
+              lg:text-left
 
-              lg:flex-row
+              text-(--color-brand-100)
 
-              items-center
-
-              justify-between
-
-              gap-6
+              max-w-75
             "
           >
-            <p
-              className="
-                text-med-caption
+            Explore our full range of services and transparent pricing.
+          </p>
 
-                text-center
-                lg:text-left
-
-                text-(--color-brand-100)
-
-                max-w-75
-              "
-            >
-              Explore our full range of services and transparent pricing.
-            </p>
-
+          <Link to="/services">
             <button
               className="
-                w-full
-                max-w-75
+                min-w-75
 
                 h-11
 
@@ -225,19 +266,19 @@ export default function ServicesPreview() {
               View All Services & Pricing
               <FiChevronRight size={18} />
             </button>
-          </div>
-
-          {/* Divider */}
-
-          <div
-            className="
-              w-full
-              h-px
-
-              bg-neutral-700
-            "
-          />
+          </Link>
         </div>
+
+        {/* Divider */}
+
+        <div
+          className="
+            w-full
+            h-px
+
+            bg-neutral-700
+          "
+        />
       </Container>
     </section>
   );

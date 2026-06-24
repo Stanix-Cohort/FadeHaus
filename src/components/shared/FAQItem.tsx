@@ -21,34 +21,34 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
       <button
         onClick={() => setOpen(!open)}
         className="
-    w-full
+            w-full
 
-    flex
-    items-center
-    justify-between
+            flex
+            items-center
+            justify-between
 
-    text-left
+            text-left
 
-    text-(--color-brand-300)
+            text-(--color-brand-300)
 
-    text-med-sm
+            text-med-sm
 
-    cursor-pointer
-  "
+            cursor-pointer
+        "
       >
         <div
           className="
-      flex
-      items-center
+            flex
+            items-center
 
-      gap-3
-    "
+            gap-3
+            "
         >
           <span
             className="
-        text-(--color-brand-300)
-        font-bold
-      "
+            text-(--color-brand-300)
+            font-bold
+        "
           >
             -
           </span>

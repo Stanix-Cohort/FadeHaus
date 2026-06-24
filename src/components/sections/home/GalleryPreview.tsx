@@ -1,6 +1,6 @@
 import Container from "../../global/Container";
 
-import ArrowIcon from "../../../assets/icons/arrow_icon.svg";
+import ArrowIcon from "../assets/icons/arrow_icon.svg";
 
 import { FiChevronRight } from "react-icons/fi";
 

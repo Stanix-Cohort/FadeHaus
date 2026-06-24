@@ -4,6 +4,8 @@
   /*
   BRAND COLORS
 */
+  --top-banner-height: 36px;
+  --navbar-height: 92px;
   --fw-medium: 500;
   --fw-bold: 700;
   --fw-regular: 400;
@@ -377,6 +379,20 @@ h4,
   line-height: var(--lh-tight);
   font-weight: var(--fw-regular);
   color: var(--color-white);
+}
+
+.hero-description {
+  color: var(--color-brand-100);
+
+  font-family: var(--font-body);
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+  line-height: 120%;
+
+  letter-spacing: 0.05em;
 }
 
 @media (min-width: 1024px) {

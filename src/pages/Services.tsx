@@ -1,5 +1,6 @@
 import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Services.css";
 
 const WHATSAPP = "2349125285704";
@@ -185,7 +186,15 @@ const FAQItem = ({ q, a }: FAQ) => {
 };
 
 const Services = () => {
-  const [activeTab, setActiveTab] = useState<string>("HAIRCUTS");
+  const [searchParams] = useSearchParams();
+
+  const initialTab =
+    searchParams.get("tab") && tabs.includes(searchParams.get("tab") as string)
+      ? (searchParams.get("tab") as string)
+      : "HAIRCUTS";
+
+  const [activeTab, setActiveTab] = useState<string>(initialTab);
+
   const current = data[activeTab];
 
   return (

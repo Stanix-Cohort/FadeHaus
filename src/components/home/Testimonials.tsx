@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, A11y } from "swiper/modules";
+
+import "swiper/css";
+
 import Container from "../global/Container";
 
 import BackgroundImage from "../../assets/images/BG_Section_4.jpg";
@@ -7,41 +12,19 @@ import BackgroundImage from "../../assets/images/BG_Section_4.jpg";
 import { IoStarSharp } from "react-icons/io5";
 
 import TestimonialCard from "../shared/TestimonialCard";
-import TestimonialCarouselControls from "../shared/TestimonialCarouselControls";
+import CarouselControls from "../shared/CarouselControls";
 
 import { testimonials } from "../../assets/data";
 
 export default function Testimonials() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<any>(null);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const scroll = (direction: "left" | "right") => {
-    const el = scrollRef.current;
-
-    if (!el) return;
-
-    const cardWidth = window.innerWidth >= 1024 ? 474 : 374;
-
-    const nextIndex =
-      direction === "right"
-        ? Math.min(currentIndex + 1, testimonials.length - 1)
-        : Math.max(currentIndex - 1, 0);
-
-    setCurrentIndex(nextIndex);
-
-    el.scrollTo({
-      left: nextIndex * cardWidth,
-      behavior: "smooth",
-    });
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section
       className="
         relative
-
-        overflow-hidden
 
         py-12
         lg:py-20
@@ -63,8 +46,6 @@ export default function Testimonials() {
             h-full
 
             object-cover
-
-            opacity-20
           "
         />
 
@@ -73,12 +54,12 @@ export default function Testimonials() {
             absolute
             inset-0
 
-            bg-neutral-800
+            bg-black/80
           "
         />
       </div>
 
-      {/* Content */}
+      {/* Header */}
 
       <Container>
         <div
@@ -91,11 +72,10 @@ export default function Testimonials() {
 
             items-center
 
-            gap-10
+            mb-12
+            lg:mb-16
           "
         >
-          {/* Header */}
-
           <div
             className="
               flex
@@ -114,7 +94,7 @@ export default function Testimonials() {
                 gap-2
               "
             >
-              <IoStarSharp size={18} color="#DCC9A1" />
+              <IoStarSharp size={18} color="#A68F64" />
 
               <span
                 className="
@@ -125,7 +105,7 @@ export default function Testimonials() {
                 TESTIMONIALS
               </span>
 
-              <IoStarSharp size={18} color="#DCC9A1" />
+              <IoStarSharp size={18} color="#A68F64" />
             </div>
 
             <h2
@@ -135,70 +115,82 @@ export default function Testimonials() {
                 text-center
 
                 max-w-[320px]
-
                 lg:max-w-225
               "
             >
               WHAT OUR CUSTOMERS ARE SAYING
             </h2>
           </div>
-
-          {/* Carousel */}
-
-          <div
-            className="
-              w-full
-            "
-          >
-            <div
-              ref={scrollRef}
-              className="
-                flex
-
-                gap-6
-
-                overflow-x-auto
-
-                scrollbar-hide
-
-                scroll-smooth
-
-                w-full
-              "
-            >
-              {testimonials.map((testimonial) => (
-                <TestimonialCard
-                  key={testimonial.id}
-                  image={testimonial.image}
-                  name={testimonial.name}
-                  review={testimonial.review}
-                  rating={testimonial.rating}
-                />
-              ))}
-            </div>
-
-            {/* Controls */}
-
-            <TestimonialCarouselControls
-              currentIndex={currentIndex}
-              total={testimonials.length}
-              onPrev={() => scroll("left")}
-              onNext={() => scroll("right")}
-            />
-          </div>
-
-          {/* Divider */}
-
-          <div
-            className="
-              w-full
-              h-px
-
-              bg-neutral-700
-            "
-          />
         </div>
       </Container>
+
+      {/* Carousel */}
+
+      <div
+        className="
+          relative
+          z-10
+
+          mb-10
+        "
+      >
+        <Swiper
+          modules={[Keyboard, A11y]}
+          keyboard={{
+            enabled: true,
+          }}
+          spaceBetween={24}
+          slidesPerView={"auto"}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => {
+            setActiveIndex(swiper.activeIndex);
+          }}
+          className="
+            !px-0
+
+            lg:!px-20
+          "
+        >
+          {testimonials.map((testimonial) => (
+            <SwiperSlide
+              key={testimonial.id}
+              className="
+                !w-auto
+              "
+            >
+              <TestimonialCard
+                image={testimonial.image}
+                name={testimonial.name}
+                review={testimonial.review}
+                rating={testimonial.rating}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Controls */}
+
+        <div
+          className="
+            mt-10
+
+            px-0
+
+            lg:px-0
+          "
+        >
+          <Container>
+            <CarouselControls
+              currentIndex={activeIndex}
+              total={testimonials.length}
+              onPrev={() => swiperRef.current?.slidePrev()}
+              onNext={() => swiperRef.current?.slideNext()}
+            />
+          </Container>
+        </div>
+      </div>
     </section>
   );
 }

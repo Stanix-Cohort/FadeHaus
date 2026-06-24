@@ -88,7 +88,7 @@ export default function CTASection() {
             {/* WhatsApp Button */}
 
             <a
-              href="https://wa.me/2348001234567"
+              href="https://wa.me/2347049666359"
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -153,7 +153,7 @@ export default function CTASection() {
               </span>
 
               <a
-                href="tel:+2348001234567"
+                href="tel:+2347049666359"
                 className="
                   text-med-sm
 

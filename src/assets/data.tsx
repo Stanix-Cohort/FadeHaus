@@ -122,47 +122,46 @@ export const faqs = [
     id: 1,
     question: "How do I book an appointment?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "Simply click 'Book This' on any service or message us directly on WhatsApp.",
   },
 
   {
     id: 2,
-    question: "How do I book an appointment?",
+    question: "Do you offer home service?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "Yes! We offer home visits on the Mainland and Island. Select the Home Service tab for pricing.",
   },
 
   {
     id: 3,
-    question: "How do I book an appointment?",
+    question: "How long does a session take?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "Most sessions take between 30–60 minutes depending on the service.",
   },
 
   {
     id: 4,
-    question: "How do I book an appointment?",
+    question: "What payment methods do you accept?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "We accept cash and bank transfers. Payment is made before or at the time of service.",
   },
 
   {
     id: 5,
-    question: "How do I book an appointment?",
-    answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+    question: "Can I walk in without an appointment?",
+    answer: "Walk-ins are welcome but booking in advance guarantees your slot.",
   },
 
   {
     id: 6,
-    question: "How do I book an appointment?",
+    question: "Can I bring a reference photo?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "Absolutely. In fact, we encourage it. You can send your preferred style directly through WhatsApp when booking.",
   },
   {
     id: 7,
-    question: "How do I book an appointment?",
+    question: "Where is FadeHaus located?",
     answer:
-      "Appointments can be booked online, via WhatsApp, or by calling our team directly. We recommend booking in advance to secure your preferred time slot.",
+      "Our address and Get Direction links can be found on the Contact page, announcement bar and footer.",
   },
 ];

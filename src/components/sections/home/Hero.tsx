@@ -1,6 +1,6 @@
 import Container from "../../global/Container";
 
-import HeroImage from "../../../assets/images/Mobile_BG_IMG_Hero_Section.png";
+import HeroImage from "../assets/images/Mobile_BG_IMG_Hero_Section.png";
 
 import FloatingWhatsApp from "../../global/FloatingWhatsApp";
 

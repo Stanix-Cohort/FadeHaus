@@ -1,14 +1,32 @@
+import { Link } from "react-router-dom";
+import { FiChevronRight } from "react-icons/fi";
+
 import Container from "../global/Container";
-import MobileHeroImage from "../../assets/images/Mobile_BG_IMG_Hero_Section.png";
+
+import MobileHeroImage from "../../assets/images/Mobile_BG_IMG.png";
 import DesktopHeroImage from "../../assets/images/BG_IMG_Hero_Section.png";
 
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
+
 export default function Hero() {
+  const openWhatsApp = () => {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20FadeHaus,%20I'd%20like%20to%20book%20an%20appointment.`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
   return (
     <section
       id="home"
       className="
         relative
-        min-h-226
+
+        h-226
+        lg:h-190
+
+        overflow-hidden
       "
     >
       {/* Background */}
@@ -27,6 +45,7 @@ export default function Hero() {
             h-full
 
             object-cover
+            object-center
           "
         />
 
@@ -43,6 +62,7 @@ export default function Hero() {
             h-full
 
             object-cover
+            object-center
           "
         />
 
@@ -53,7 +73,7 @@ export default function Hero() {
             absolute
             inset-0
 
-            bg-black/50
+            bg-black/45
           "
         />
       </div>
@@ -64,38 +84,42 @@ export default function Hero() {
         <div
           className="
             relative
-            z-10
+            z-20
 
-            min-h-226
+            h-full
 
             flex
+            flex-col
+
             items-center
+            text-center
+
+            lg:items-start
+            lg:text-left
           "
         >
           <div
             className="
-              w-full
+              mt-62
 
-              flex
-              flex-col
+              md:mt-60
 
-              items-center
-              text-center
+              lg:mt-62
 
-              lg:items-start
-              lg:text-left
-
-              mt-85
-              md:mt-98
-
-              lg:mt-0
-
-              max-w-175
+              max-w-190
             "
           >
             {/* Heading */}
 
-            <h1 className="hero-heading">
+            <h1
+              className="
+                hero-heading
+
+                leading-[120%]
+
+                tracking-[0.01em]
+              "
+            >
               PRECISION CUTS.
               <br />
               PREMIUM EXPERIENCE.
@@ -105,24 +129,36 @@ export default function Hero() {
 
             <p
               className="
-                hero-description
+                mt-4
+
+                mx-auto
+                lg:mx-0
+
+                max-w-[320px]
+                md:max-w-125
 
                 text-(--color-brand-100)
 
-                mt-6
+                font-medium
 
-                max-w-162.5
+                text-[14px]
+                md:text-[15px]
+                lg:text-[20px]
+
+                leading-[120%]
+
+                tracking-wider
               "
             >
               Where craftsmanship, style, and attention to detail come together
               to create your best look.
             </p>
 
-            {/* CTA Buttons */}
+            {/* Buttons */}
 
             <div
               className="
-                mt-10
+                mt-8
 
                 flex
                 flex-col
@@ -132,48 +168,19 @@ export default function Hero() {
                 items-center
                 lg:items-start
 
-                gap-6
-
-                w-full
-                lg:w-auto
+                gap-4
               "
             >
-              {/* View Gallery FIRST */}
+              {/* WhatsApp */}
 
               <button
+                onClick={openWhatsApp}
+                aria-label="Book appointment on WhatsApp"
                 className="
-                  w-55
+                  order-1
+                  lg:order-2
 
-                  h-13.5
-
-                  rounded-xs
-
-                  border-[1.5px]
-                  border-(--color-brand-300)
-
-                  text-(--color-brand-300)
-
-                  text-med-lg
-
-                  cursor-pointer
-
-                  transition-all
-                  duration-300
-
-                  hover:text-(--btn-link-hover)
-                  hover:border-(--btn-link-hover)
-                "
-              >
-                View Gallery
-              </button>
-
-              {/* Book Now */}
-
-              <button
-                className="
-                  w-full
-                  max-w-83
-
+                  w-83
                   h-13.5
 
                   rounded-xs
@@ -184,16 +191,64 @@ export default function Hero() {
 
                   text-med-md
 
-                  cursor-pointer
+                  flex
+                  items-center
+                  justify-center
+
+                  gap-3
+
                   transition-all
                   duration-300
 
                   hover:bg-(--btn-primary-hover)
-                hover:text-neutral-900
+
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-(--color-brand-300)
                 "
               >
                 Book Now On WhatsApp
+                <FiChevronRight size={18} />
               </button>
+
+              {/* Gallery */}
+
+              <Link
+                to="/gallery"
+                className="
+                  order-2
+                  lg:order-1
+                "
+              >
+                <button
+                  aria-label="View Gallery"
+                  className="
+                    w-45.25
+                    h-13.5
+
+                    rounded-xs
+
+                    border-[1.5px]
+                    border-(--color-brand-300)
+
+                    text-(--color-brand-300)
+
+                    text-med-lg
+
+                    transition-all
+                    duration-300
+
+                    hover:text-(--btn-link-hover)
+                    hover:border-(--btn-link-hover)
+
+                    focus-visible:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-(--color-brand-300)
+                  "
+                >
+                  View Gallery
+                </button>
+              </Link>
             </div>
           </div>
         </div>

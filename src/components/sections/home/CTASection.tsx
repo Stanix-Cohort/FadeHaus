@@ -1,6 +1,6 @@
 import { FaWhatsapp } from "react-icons/fa";
 
-import PhoneIcon from "../../../assets/icons/phone.svg";
+import PhoneIcon from "../../assets/icons/phone.svg";
 
 import Container from "../../global/Container";
 

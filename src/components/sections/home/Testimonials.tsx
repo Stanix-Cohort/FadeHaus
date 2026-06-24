@@ -4,7 +4,7 @@ import { IoStarSharp } from "react-icons/io5";
 
 import TestimonialCard from "../../shared/TestimonialCard";
 
-import BGSection4 from "../../../assets/images/BG_Section_4.jpg";
+import BGSection4 from "../assets/images/BG_Section_4.jpg";
 
 import { testimonials } from "../../../assets/data";
 
