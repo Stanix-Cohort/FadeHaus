@@ -148,16 +148,16 @@ export default function Testimonials() {
             setActiveIndex(swiper.activeIndex);
           }}
           className="
-            !px-0
+            px-0!
 
-            lg:!px-20
+            lg:px-20!
           "
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide
               key={testimonial.id}
               className="
-                !w-auto
+                w-auto!
               "
             >
               <TestimonialCard

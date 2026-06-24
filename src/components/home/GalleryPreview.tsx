@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Container from "../global/Container";
 
 import ArrowIcon from "../../assets/icons/arrow_icon.svg";
@@ -521,9 +523,9 @@ export default function GalleryPreview() {
               Explore a collection of precision fades, sharp tapers, clean beard
               trims, and premium grooming transformations delivered by FadeHaus.
             </p>
-
-            <button
-              className="
+            <Link to="/gallery">
+              <button
+                className="
                 w-55
 
                 h-13.5
@@ -548,9 +550,10 @@ export default function GalleryPreview() {
 
                 text-med-lg
               "
-            >
-              View Gallery
-            </button>
+              >
+                View Gallery
+              </button>
+            </Link>
           </div>
         </div>
       </Container>

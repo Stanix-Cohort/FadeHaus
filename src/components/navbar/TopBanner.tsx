@@ -141,7 +141,7 @@ export default function TopBanner() {
             underline
           "
         >
-          +234 800 123 4567
+          +234 704 966 6359
         </a>
       </div>
     </div>

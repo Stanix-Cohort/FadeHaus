@@ -18,7 +18,6 @@ import { homeServices } from "../../assets/data";
 
 export default function ServicesPreview() {
   const mobileSwiperRef = useRef<any>(null);
-  const desktopSwiperRef = useRef<any>(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -32,7 +31,7 @@ export default function ServicesPreview() {
         lg:py-20
       "
     >
-      {/* Header */}
+      {/* ── HEADER ─────────────────────────────────────────────────────────── */}
 
       <Container>
         <div
@@ -98,114 +97,121 @@ export default function ServicesPreview() {
         </div>
       </Container>
 
-      {/* Carousel */}
+      {/* ── MOBILE / TABLET CAROUSEL ───────────────────────────────────────────
 
-      <div
-        className="
-          mb-10
-          lg:mb-12
-        "
-      >
-        {/* Mobile */}
+          WHY the Swiper lives OUTSIDE Container:
+          ──────────────────────────────────────────
+          Container applies horizontal padding so content stays inset from the
+          viewport edge. If Swiper sits inside Container it inherits that
+          padding on both sides — the first card never touches the left edge
+          and the carousel feels boxed in rather than open.
 
-        <div className="lg:hidden">
-          <Swiper
-            modules={[Keyboard, A11y]}
-            keyboard={{
-              enabled: true,
-            }}
-            spaceBetween={24}
-            slidesPerView={"auto"}
-            onSwiper={(swiper) => {
-              mobileSwiperRef.current = swiper;
-            }}
-            onSlideChange={(swiper) => {
-              setActiveIndex(swiper.activeIndex);
-            }}
-            className="!px-0"
-          >
-            {homeServices.map((service) => (
-              <SwiperSlide key={service.id} className="!w-auto">
-                <ServiceCard
-                  image={service.image}
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+          Solution: Swiper is a direct child of <section> (no Container).
+          We replicate only the LEFT padding via `style` so the first card
+          aligns with the header text above, while cards to the right bleed
+          freely to the screen edge on swipe. This is the standard pattern
+          for full-bleed carousels that stay aligned with page content.
 
-        {/* Desktop */}
+          ── paddingLeft value ──
+          Match this to your Container's horizontal padding token.
+          If Container uses `px-4`  → "1rem"
+          If Container uses `px-6`  → "1.5rem"
+          If Container uses `px-5`  → "1.25rem"
+          Adjust here if your Container breakpoint padding changes.
+      ──────────────────────────────────────────────────────────────────────── */}
 
-        <div className="hidden lg:block">
-          <Container>
-            <div className="overflow-hidden">
-              <Swiper
-                modules={[Keyboard, A11y]}
-                keyboard={{
-                  enabled: true,
-                }}
-                spaceBetween={24}
-                slidesPerView={"auto"}
-                onSwiper={(swiper) => {
-                  desktopSwiperRef.current = swiper;
-                }}
-                onSlideChange={(swiper) => {
-                  setActiveIndex(swiper.activeIndex);
-                }}
-              >
-                {homeServices.map((service) => (
-                  <SwiperSlide key={service.id} className="!w-auto">
-                    <ServiceCard
-                      image={service.image}
-                      icon={service.icon}
-                      title={service.title}
-                      description={service.description}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </Container>
-        </div>
-
-        {/* Controls */}
-
-        <div
-          className="
-            mt-8
-
-            px-0
-
-            lg:px-0
-          "
+      <div className="lg:hidden mb-10">
+        <Swiper
+          modules={[Keyboard, A11y]}
+          keyboard={{ enabled: true }}
+          spaceBetween={24}
+          slidesPerView="auto"
+          style={{ paddingLeft: "1rem" }}
+          onSwiper={(swiper) => {
+            mobileSwiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => {
+            setActiveIndex(swiper.activeIndex);
+          }}
+          className="px-0!"
         >
+          {homeServices.map((service) => (
+            <SwiperSlide key={service.id} className="w-auto!">
+              <ServiceCard
+                image={service.image}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Controls stay inside Container so chevrons + indicators align
+            with the rest of the page content */}
+        <div className="mt-8">
           <Container>
             <CarouselControls
               currentIndex={activeIndex}
               total={homeServices.length}
-              onPrev={() => {
-                if (window.innerWidth < 1024) {
-                  mobileSwiperRef.current?.slidePrev();
-                } else {
-                  desktopSwiperRef.current?.slidePrev();
-                }
-              }}
-              onNext={() => {
-                if (window.innerWidth < 1024) {
-                  mobileSwiperRef.current?.slideNext();
-                } else {
-                  desktopSwiperRef.current?.slideNext();
-                }
-              }}
+              onPrev={() => mobileSwiperRef.current?.slidePrev()}
+              onNext={() => mobileSwiperRef.current?.slideNext()}
             />
           </Container>
         </div>
       </div>
 
-      {/* Footer */}
+      {/* ── DESKTOP STATIC GRID ────────────────────────────────────────────────
+
+          WHY items-stretch (not items-start):
+          ──────────────────────────────────────
+          Each ServiceCard has a fixed h-[520px], so all cards in the row
+          are already the same height. BUT items-start was previously used,
+          which means each grid cell only takes up as much height as its
+          card needs and does not stretch to fill the row.
+
+          Switching to items-stretch ensures every grid cell stretches to
+          the full row height. This matters because the desktop animation
+          zone inside ServiceCard uses flex-col layout — if the cell height
+          is taller than the card's intrinsic content, items-stretch ensures
+          the card fills that cell fully rather than collapsing. This keeps
+          the gold border and button zone sitting at a CONSISTENT vertical
+          position across all four cards in the row, even if content length
+          differs slightly between cards.
+
+          WHY no Swiper on desktop:
+          ──────────────────────────
+          All four cards are always visible simultaneously. Swiper on desktop
+          adds drag affordances and momentum that feel wrong for a static
+          layout. A CSS grid is the correct primitive — simple, predictable,
+          and zero JavaScript overhead.
+      ──────────────────────────────────────────────────────────────────────── */}
+
+      <div className="hidden lg:block mb-12">
+        <Container>
+          <div
+            className="
+              grid
+              grid-cols-4
+
+              gap-8
+              xl:gap-10
+
+              items-stretch
+            "
+          >
+            {homeServices.map((service) => (
+              <ServiceCard
+                key={service.id}
+                image={service.image}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+              />
+            ))}
+          </div>
+        </Container>
+      </div>
 
       <Container>
         <div
@@ -273,6 +279,7 @@ export default function ServicesPreview() {
           </Link>
         </div>
 
+        {/* Section divider */}
         <div
           className="
             w-full

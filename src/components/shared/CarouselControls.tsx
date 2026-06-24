@@ -87,11 +87,7 @@ export default function CarouselControls({
         ))}
       </div>
 
-      {/* DESKTOP SPACER */}
-
       <div className="hidden lg:block flex-1" />
-
-      {/* RIGHT ARROW */}
 
       <button
         onClick={onNext}

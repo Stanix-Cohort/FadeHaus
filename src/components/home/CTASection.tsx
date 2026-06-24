@@ -68,8 +68,6 @@ export default function CTASection() {
             </p>
           </div>
 
-          {/* Actions */}
-
           <div
             className="
               flex
