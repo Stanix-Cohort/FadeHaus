@@ -11,7 +11,8 @@
   padding: 60px 40px 30px;
 }
 .svc-header__label {
-  color: #c9a84c;
+  /* color: #c9a84c; */
+  color: #c8b07c;
   font-size: 13px;
   letter-spacing: 4px;
   margin-bottom: 16px;
@@ -50,7 +51,8 @@
   padding: 40px 60px;
 }
 .svc-section__label {
-  color: #c9a84c;
+  /* color: #c9a84c; */
+  color: #c8b07c;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 30px;
@@ -63,7 +65,7 @@
 }
 
 .svc-card {
-  border: 1px solid #C9A84C;
+  border: 1px solid #c8b07c;
   /* padding: 20px; */
   /* padding: 0 20px 20px 20px; */
   text-align: center;
@@ -77,10 +79,13 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   align-items: center;
-  /* border: 1px solid #C9A84C; */
   text-align: center;
-  /* padding: 0 20px 20px 20px; */
 }
+ /* .svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+} */
 
 .svc-card__img-wrap {
   width: 272px;
@@ -101,7 +106,7 @@
 .svc-card__name {
   font-size: 25px;
   font-weight: 900;
-  color: #c9a84c;
+  color: #c8b07c;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
@@ -109,7 +114,7 @@
 .svc-card__price {
   font-size: 28px;
   font-weight: 800;
-  color: #C9A84C;
+  color: #c8b07c;
   margin-bottom: 12px;
 }
 .svc-card__desc {
@@ -117,7 +122,7 @@
   color: #fff;
   line-height: 1.6;
   margin-bottom: 20px;
-  font-weight: 900;
+  font-weight: 600;
   font-family: 'Georgia', serif;
 }
 .svc-card__btn {
