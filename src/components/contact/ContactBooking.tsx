@@ -363,6 +363,7 @@ export default function ContactBooking() {
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
+                    style={{ colorScheme: "dark" }}
                     className={`
                     h-12
 
