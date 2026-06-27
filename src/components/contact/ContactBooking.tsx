@@ -359,28 +359,30 @@ export default function ContactBooking() {
                     gap-4
                   "
                 >
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    style={{ colorScheme: "dark" }}
-                    className={`
-                    h-12
+                  <div className="relative">
+                    <input
+                      type="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                      className={`
+                        h-12
+                        w-full
 
-                    border
-                    border-(--color-brand-300)
+                        rounded-xs
 
-                    px-6
+                        border
+                        border-(--color-brand-300)
 
-                    bg-transparent
+                        px-6
 
-                    rounded-xs
+                        bg-transparent
 
-                    scheme-dark
+                        text-white
 
-                    ${date ? "text-white" : "text-white/30"}
-                `}
-                  />
+                        scheme-dark
+                    `}
+                    />
+                  </div>
 
                   <ServiceDropdown
                     value={time}
