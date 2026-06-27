@@ -107,6 +107,7 @@
   object-fit: contain;
   object-position: top;
   /* filter: brightness(0.9) contrast(1.1) saturate(0.85); */
+  align-items: center;
 }
 .svc-card__name {
   font-size: 25px;
