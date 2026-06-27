@@ -132,13 +132,22 @@
 }
 
 /* CTA */
-.gal-cta {
+/* .gal-cta {
   background-size: cover;
   background-position: center;
   position: relative;
   text-align: center;
   padding: 80px 40px;
+} */
+
+.gal-cta {
+  background: #1a1a1a;
+  position: relative;
+  text-align: center;
+  padding: 80px 40px;
 }
+
+
 
 .gal-cta__overlay {
   position: absolute;
