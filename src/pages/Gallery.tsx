@@ -11,7 +11,6 @@ import Haircut9 from "../assets/images/Haircut_9.png";
 import BeardTrim from "../assets/images/beardTrim.png";
 import FullBeard from "../assets/images/fullbeardsculting.png";
 import HomeService from "../assets/images/Home_Service_Cut_4.png";
-import BgSection from "../assets/images/BG_Section_4.jpg";
 import phoneIcon from "../assets/icons/phone.svg";
 
 const WHATSAPP = "2347049666359";
