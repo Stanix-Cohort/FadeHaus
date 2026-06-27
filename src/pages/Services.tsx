@@ -8,7 +8,6 @@ import signaturegrooming from "../assets/images/signaturegrooming.png";
 import taperfade from "../assets/images/taperfade.png";
 import fullbeardsculpting from "../assets/images/fullbeardsculting.svg";
 import island from "../assets/images/island.png";
-import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./Services.css";
@@ -30,7 +29,6 @@ const tabs: string[] = [
   "PREMIUM PACKAGE",
   "HOME SERVICE",
 ];
-
 
 // {/* <hr style={{ border: 'none', borderTop: '1px solid #333', margin: '0 60px' }} /> */}
 
@@ -60,7 +58,7 @@ const data: Record<string, TabData> = {
         price: "₦5,000",
         desc: "Clean, sharp fade with seamless blending.",
         // img: "/assets/skinfade.svg",
-         img: skinfade,
+        img: skinfade,
       },
       {
         name: "LOW FADE",
@@ -86,7 +84,7 @@ const data: Record<string, TabData> = {
       {
         name: "BEARD TRIM",
         desc: "Sharp shaping and maintenance.",
-         price: "₦3,000",
+        price: "₦3,000",
         // img: "/assets/beardtrim.svg",
         img: beardtrim,
       },
@@ -158,8 +156,6 @@ const data: Record<string, TabData> = {
   },
 };
 
-
-
 const faqs: FAQ[] = [
   {
     q: "How do I book an appointment?",
@@ -225,81 +221,79 @@ const Services = () => {
   const current = data[activeTab];
 
   return (
-    <MainLayout>
-      <div className="services-page">
-        <div className="svc-header">
-          <p className="svc-header__label">✂ OUR SERVICES ✂</p>
-          <h1 className="svc-header__title">PREMIUM GROOMING SERVICE</h1>
-        </div>
+    <div className="services-page">
+      <div className="svc-header">
+        <p className="svc-header__label">✂ OUR SERVICES ✂</p>
+        <h1 className="svc-header__title">PREMIUM GROOMING SERVICE</h1>
+      </div>
 
-        <div className="svc-tabs">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              className={`svc-tab ${activeTab === tab ? "active" : ""}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
+      <div className="svc-tabs">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            className={`svc-tab ${activeTab === tab ? "active" : ""}`}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      <div className="svc-section">
+        <p className="svc-section__label">{current.label}</p>
+        <div className="svc-grid">
+          {current.services.map((s) => (
+            <ServiceCard key={s.name} {...s} />
           ))}
         </div>
+      </div>
 
-        <div className="svc-section">
-          <p className="svc-section__label">{current.label}</p>
-          <div className="svc-grid">
-            {current.services.map((s) => (
-              <ServiceCard key={s.name} {...s} />
+      <div className="svc-tailored">
+        <p className="svc-tailored__heading">Need something tailored?</p>
+        <p className="svc-tailored__sub">
+          For bespoke packages or home service quotes, message us directly on:{" "}
+          <span className="svc-tailored__wa" onClick={() => openWhatsApp()}>
+            WhatsApp
+          </span>
+        </p>
+      </div>
+
+      <hr className="svc-divider" />
+
+      <div className="svc-banner">
+        <h2 className="svc-banner__title">READY FOR YOUR NEXT CUT?</h2>
+        <p className="svc-banner__sub">
+          Book your appointment in minutes and experience precision grooming the
+          FadeHaus way.
+        </p>
+        <button className="svc-banner__btn" onClick={() => openWhatsApp()}>
+          &#9711; Book Now On WhatsApp
+        </button>
+      </div>
+
+      <div className="svc-faqs">
+        <p className="svc-faqs__label">&#9432; FAQs &#9432;</p>
+
+        <p className="svc-faqs__sub">
+          Have questions? Here are answers to some of the things clients ask
+          before booking with FadeHaus.
+        </p>
+
+        <div className="svc-faqs__grid">
+          <div>
+            {faqs.slice(0, 3).map((f) => (
+              <FAQItem key={f.q} {...f} />
+            ))}
+          </div>
+
+          <div>
+            {faqs.slice(3).map((f) => (
+              <FAQItem key={f.q} {...f} />
             ))}
           </div>
         </div>
-
-        <div className="svc-tailored">
-          <p className="svc-tailored__heading">Need something tailored?</p>
-          <p className="svc-tailored__sub">
-            For bespoke packages or home service quotes, message us directly on:{" "}
-            <span className="svc-tailored__wa" onClick={() => openWhatsApp()}>
-              WhatsApp
-            </span>
-          </p>
-        </div>
-
-        <hr className="svc-divider" />
-
-        <div className="svc-banner">
-          <h2 className="svc-banner__title">READY FOR YOUR NEXT CUT?</h2>
-          <p className="svc-banner__sub">
-            Book your appointment in minutes and experience precision grooming
-            the FadeHaus way.
-          </p>
-          <button className="svc-banner__btn" onClick={() => openWhatsApp()}>
-            &#9711; Book Now On WhatsApp
-          </button>
-        </div>
-
-        <div className="svc-faqs">
-          <p className="svc-faqs__label">&#9432; FAQs &#9432;</p>
-
-          <p className="svc-faqs__sub">
-            Have questions? Here are answers to some of the things clients ask
-            before booking with FadeHaus.
-          </p>
-
-          <div className="svc-faqs__grid">
-            <div>
-              {faqs.slice(0, 3).map((f) => (
-                <FAQItem key={f.q} {...f} />
-              ))}
-            </div>
-
-            <div>
-              {faqs.slice(3).map((f) => (
-                <FAQItem key={f.q} {...f} />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

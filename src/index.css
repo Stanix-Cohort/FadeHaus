@@ -445,3 +445,31 @@ h4,
     transform: translateX(-100%);
   }
 }
+
+.whatsapp-fill {
+  position: relative;
+  overflow: hidden;
+  transition: color 300ms ease;
+}
+
+.whatsapp-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #1D7A43;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 180ms ease;
+
+  z-index: 0;
+}
+
+.whatsapp-fill:hover::before {
+  transform: scaleX(1);
+}
+
+.whatsapp-fill:hover {
+  color: white;
+}

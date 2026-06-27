@@ -42,7 +42,7 @@ export default function ServiceCard({
         flex
         flex-col
 
-        h-[520px]
+        h-130
       "
     >
       {/* ── IMAGE ─────────────────────────────────────────────────────────── */}
@@ -155,37 +155,6 @@ export default function ServiceCard({
         {/* Gold border sits directly beneath the button */}
         <div className="w-full h-px bg-(--color-brand-300)" />
       </div>
-
-      {/* ── DESKTOP ANIMATION ───────────────────────────────────────────────
-
-          GEOMETRY — two independently animated elements, one container
-          ───────────────────────────────────────────────────────────────
-          Container: h-[45px], overflow-hidden, relative
-            → reserves exactly enough space for button(44px) + border(1px)
-            → clips anything above y=0 and below y=45
-
-          Element A — Border (absolute, top-0, h-px)
-            REST : translateY(0)   → sits at y=0..1   → VISIBLE at top ✓
-            HOVER: translateY(44px) → travels to y=44..45 → VISIBLE at bottom ✓
-            Travel: 44px downward — clearly visible movement ✓
-
-          Element B — Button (absolute, top-0, h-11 = 44px)
-            REST : translateY(-44px) → sits at y=-44..0  → HIDDEN above clip ✓
-            HOVER: translateY(0px)   → sits at y=0..44   → VISIBLE, fills zone ✓
-            Travel: 44px downward — drops in from above ✓
-
-          What the eye sees:
-            REST : only the gold border line visible below the description ✓
-            HOVER: border travels DOWN 44px (clearly moving),
-                   button drops in from above simultaneously,
-                   they arrive as one connected unit —
-                   button on top (y=0..44), border beneath (y=44..45) ✓
-
-          Both use identical transition-transform duration-300 ease-out
-          so they are perfectly synchronised. Zero layout shift.
-          Card height h-[520px] never changes.
-
-      ──────────────────────────────────────────────────────────────────── */}
 
       <div
         className="

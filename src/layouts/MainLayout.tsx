@@ -1,17 +1,16 @@
+import { Outlet } from "react-router-dom";
 import Header from "../components/navbar/Header";
 import Footer from "../components/home/Footer";
 import FloatingWhatsApp from "../components/global/FloatingWhatsApp";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function MainLayout({ children }: Props) {
+export default function HomeLayout() {
   return (
     <>
       <Header />
 
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
 
       <Footer />
 
