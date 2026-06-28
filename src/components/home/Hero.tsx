@@ -104,7 +104,7 @@ export default function Hero() {
 
               md:mt-60
 
-              lg:mt-62
+              lg:mt-52
 
               max-w-190
             "

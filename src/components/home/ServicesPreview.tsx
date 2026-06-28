@@ -23,13 +23,15 @@ export default function ServicesPreview() {
 
   return (
     <section
-      id="services-preview"
       className="
         bg-neutral-800
 
-        py-12
-        lg:py-20
-      "
+        pt-12
+        pb-0
+
+        lg:pt-20
+        lg:pb-0
+    "
     >
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
 
@@ -97,9 +99,9 @@ export default function ServicesPreview() {
         </div>
       </Container>
 
-     
+      {/* ── MOBILE / TABLET CAROUSEL ───────────────────────────────────────── */}
 
-      <div className="lg:hidden mb-10">
+      <div className="lg:hidden mb-6">
         <Swiper
           modules={[Keyboard, A11y]}
           keyboard={{ enabled: true }}
@@ -126,8 +128,6 @@ export default function ServicesPreview() {
           ))}
         </Swiper>
 
-        {/* Controls stay inside Container so chevrons + indicators align
-            with the rest of the page content */}
         <div className="mt-8">
           <Container>
             <CarouselControls
@@ -140,9 +140,7 @@ export default function ServicesPreview() {
         </div>
       </div>
 
-      
-
-      <div className="hidden lg:block mb-12">
+      <div className="hidden lg:block mb-8">
         <Container>
           <div
             className="
@@ -152,7 +150,7 @@ export default function ServicesPreview() {
               gap-8
               xl:gap-10
 
-              items-stretch
+              items-start
             "
           >
             {homeServices.map((service) => (
@@ -167,6 +165,8 @@ export default function ServicesPreview() {
           </div>
         </Container>
       </div>
+
+      {/* ── FOOTER ─────────────────────────────────────────────────────────── */}
 
       <Container>
         <div
@@ -183,20 +183,21 @@ export default function ServicesPreview() {
             gap-6
 
             mb-14
-            lg:mb-20
-          "
+            lg:mb-18
+        "
         >
           <p
             className="
-              text-med-caption
+            text-med-caption
 
-              text-center
-              lg:text-left
+            text-center
+            lg:text-left
 
-              text-(--color-brand-100)
+            text-(--color-brand-100)
 
-              max-w-75
-            "
+            max-w-75
+            lg:max-w-none
+        "
           >
             Explore our full range of services and transparent pricing.
           </p>
@@ -234,7 +235,6 @@ export default function ServicesPreview() {
           </Link>
         </div>
 
-        {/* Section divider */}
         <div
           className="
             w-full

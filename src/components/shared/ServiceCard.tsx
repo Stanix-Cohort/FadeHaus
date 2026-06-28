@@ -11,12 +11,16 @@ const getServiceLink = (title: string) => {
   switch (title) {
     case "PRECISION HAIRCUTS":
       return "/services?tab=HAIRCUTS";
+
     case "BEARD TRIM":
       return "/services?tab=BEARD SERVICE";
+
     case "PREMIUM PACKAGE":
       return "/services?tab=PREMIUM PACKAGE";
+
     case "HOME SERVICES":
       return "/services?tab=HOME SERVICE";
+
     default:
       return "/services";
   }
@@ -43,9 +47,11 @@ export default function ServiceCard({
         flex-col
 
         h-130
+
+        overflow-hidden
       "
     >
-      {/* ── IMAGE ─────────────────────────────────────────────────────────── */}
+      {/* IMAGE */}
 
       <img
         src={image}
@@ -57,10 +63,11 @@ export default function ServiceCard({
           object-cover
 
           rounded-xs
+          cursor-pointer
         "
       />
 
-      {/* ── TITLE ─────────────────────────────────────────────────────────── */}
+      {/* TITLE */}
 
       <div
         className="
@@ -98,20 +105,21 @@ export default function ServiceCard({
         </h3>
       </div>
 
-      {/* ── DESCRIPTION ───────────────────────────────────────────────────── */}
+      {/* DESCRIPTION */}
 
       <div
         className="
           mt-3
 
-          h-20
+          h-9
 
-          lg:h-24
+          lg:h-20
         "
       >
         <p
           className="
             text-med-md
+
             text-white
           "
         >
@@ -119,127 +127,136 @@ export default function ServiceCard({
         </p>
       </div>
 
-      {/* ── MOBILE / TABLET ─────────────────────────────────────────────────
-          BOOK NOW button always visible, sitting directly above the gold
-          border line. No animation on touch devices. mt-auto pushes the
-          whole block to the bottom of the fixed-height card.
-      ──────────────────────────────────────────────────────────────────── */}
+      {/* MOBILE / TABLET */}
+
+      
 
       <div
         className="
-          lg:hidden
+    lg:hidden
 
-          mt-auto
+    flex
+    flex-col
 
-          flex
-          flex-col
-        "
+    pt-2
+    mt-2
+  "
       >
         <Link to={getServiceLink(title)}>
           <button
             className="
-              w-full
-              h-11
+        w-full
+        h-11
 
-              bg-(--color-brand-300)
+        bg-(--color-brand-300)
 
-              text-neutral-900
+        text-neutral-900
 
-              text-med-md
-            "
+        text-med-md
+      "
           >
             BOOK NOW
           </button>
         </Link>
 
-        {/* Gold border sits directly beneath the button */}
-        <div className="w-full h-px bg-(--color-brand-300)" />
+        {/* card border */}
+
+        <div
+          className="
+      mt-2
+
+      w-full
+      h-px
+
+      bg-(--color-brand-300)
+    "
+        />
       </div>
+
+      {/* DESKTOP */}
 
       <div
         className="
-          hidden
-          lg:flex
-          lg:flex-col
+    hidden
+    lg:block
 
-          mt-4
-        "
+    mt-0
+
+    relative
+
+    h-18
+
+    overflow-hidden
+  "
       >
-        {/* Animation container — clips both elements */}
-        <div className="relative h-11.25 overflow-hidden">
-          {/* Element A — Border
-              Starts at top of container (y=0, visible).
-              On hover travels DOWN to y=44 (bottom of container, still visible).
-              This is the border the user sees "leaving its position" on hover. */}
-          <div
-            className="
-              absolute
-              top-0
-              left-0
+        {/* CARD BORDER */}
 
-              w-full
-              h-px
+        <div
+          className="
+      absolute
 
-              bg-(--color-brand-300)
+      top-0
+      left-0
 
-              translate-y-0
+      w-full
+      h-px
 
-              transition-transform
-              duration-300
-              ease-out
+      bg-(--color-brand-300)
 
-              group-hover:translate-y-11
-              group-focus-within:translate-y-11
-            "
-          />
+      transition-transform
+      duration-300
+      ease-out
 
-          {/* Element B — Button
-              Starts ABOVE container (y=-44, hidden by overflow-hidden clip).
-              On hover drops DOWN to y=0, filling the container.
-              Lands directly above the border, arriving as one unit. */}
-          <div
-            className="
-              absolute
-              top-0
-              left-0
+      group-hover:translate-y-12.5
+      group-focus-within:translate-y-12.5
+    "
+        />
 
-              w-full
+        {/* BUTTON */}
 
-              -translate-y-11
+        <div
+          className="
+      absolute
 
-              transition-transform
-              duration-300
-              ease-out
+      top-0
+      left-0
 
-              group-hover:translate-y-0
-              group-focus-within:translate-y-0
-            "
-          >
-            <Link to={getServiceLink(title)}>
-              <button
-                className="
-                  w-full
-                  h-11
+      w-full
 
-                  bg-(--color-brand-300)
+      -translate-y-12
 
-                  text-neutral-900
+      transition-transform
+      duration-300
+      ease-out
 
-                  text-med-md
+      group-hover:translate-y-0
+      group-focus-within:translate-y-0
+    "
+        >
+          <Link to={getServiceLink(title)}>
+            <button
+              className="
+          w-full
+          h-11
 
-                  transition-colors
-                  duration-300
+          bg-(--color-brand-300)
 
-                  hover:bg-(--btn-primary-hover)
-                "
-              >
-                BOOK NOW
-              </button>
-            </Link>
-          </div>
+          text-neutral-900
+
+          text-med-md
+
+          cursor-pointer
+
+          transition-colors
+          duration-300
+
+          hover:bg-(--btn-primary-hover)
+        "
+            >
+              BOOK NOW
+            </button>
+          </Link>
         </div>
-
-        <div className="flex-1" />
       </div>
     </article>
   );

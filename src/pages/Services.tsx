@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./Services.css";
 
-const WHATSAPP = "2347049666359";
+const WHATSAPP = "2349125285704";
 
 const openWhatsApp = (service: string = ""): void => {
   const msg = encodeURIComponent(

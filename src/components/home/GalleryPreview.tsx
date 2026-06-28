@@ -9,16 +9,15 @@ import { galleryImages } from "../../assets/data";
 export default function GalleryPreview() {
   return (
     <section
-      id="gallery"
       className="
         bg-neutral-800
 
-        pt-8
+        pt-12
         pb-12
 
         lg:pt-16
         lg:pb-20
-      "
+    "
     >
       <Container>
         <div
