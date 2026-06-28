@@ -1,3 +1,8 @@
+
+.gallery-page {
+  position: relative;
+}
+
 .gallery-page {
   background: #111;
   color: #fff;
@@ -290,4 +295,90 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+
+
+/* ───── LIGHTBOX ───── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-img {
+  max-width: 80vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #c9a84c;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(201, 168, 76, 0.2);
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  font-size: 2.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.lightbox-arrow:hover {
+  background: rgba(201, 168, 76, 0.45);
+}
+
+.lightbox-arrow--prev {
+  left: -56px;
+}
+
+.lightbox-arrow--next {
+  right: -56px;
+}
+
+.lightbox-label {
+  color: #c9a84c;
+  font-size: 0.95rem;
+  margin-top: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lightbox-counter {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 4px;
 }
