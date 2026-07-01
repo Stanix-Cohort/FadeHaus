@@ -9,14 +9,30 @@
 .svc-header {
   text-align: center;
   padding: 60px 40px 30px;
-}
-.svc-header__label {
-  /* color: #c9a84c; */
   color: #c8b07c;
   font-size: 13px;
   letter-spacing: 4px;
   margin-bottom: 16px;
+  text-align: center;
+} */
+
+.svc-header__label {
+  color: #c8b07c;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+  display: block;
 }
+
+
+.svc-scissors {
+  transform: rotate(270deg);
+}
+
+
+
 .svc-header__title {
   font-size: 48px;
   font-weight: 900;

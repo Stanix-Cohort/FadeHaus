@@ -223,7 +223,17 @@ const Services = () => {
   return (
     <div className="services-page">
       <div className="svc-header">
-        <p className="svc-header__label">✂ OUR SERVICES ✂</p>
+        {/* <p className="svc-header__label">✂ OUR SERVICES ✂</p> */}
+
+
+      <p className="svc-header__label flex items-center justify-center gap-2">
+  <span className="svc-scissors">✂</span>
+  <span>OUR SERVICES</span>
+  <span className="svc-scissors">✂</span>
+</p>
+
+
+
         <h1 className="svc-header__title">PREMIUM GROOMING SERVICE</h1>
       </div>
 
