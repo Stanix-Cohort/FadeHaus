@@ -226,10 +226,16 @@ const Services = () => {
         {/* <p className="svc-header__label">✂ OUR SERVICES ✂</p> */}
 
 
-      <p className="svc-header__label flex items-center justify-center gap-2">
+      {/* <p className="svc-header__label flex items-center justify-center gap-2">
   <span className="svc-scissors">✂</span>
   <span>OUR SERVICES</span>
   <span className="svc-scissors">✂</span>
+</p> */}
+
+<p className="svc-header__label flex items-center justify-center gap-2">
+  <span className="svc-scissors" style={{ display: 'inline-block', transform: 'rotate(270deg)', lineHeight: '1', fontSize: '14px' }}>✂</span>
+  <span>OUR SERVICES</span>
+  <span className="svc-scissors" style={{ display: 'inline-block', transform: 'rotate(270deg)', lineHeight: '1', fontSize: '14px' }}>✂</span>
 </p>
 
 
